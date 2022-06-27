@@ -9,19 +9,22 @@ export function QrCode(){
 
     const [user] = useContext(userContext)
 
-    const [qrCodeInput, setQrCode] = useState([]);
+    const [qrCodeInput, setQrCode] = useState();
+    console.log(user.email)
+    
 
     
     let ran = "not ran"
-    const qrCode = 'otpauth://totp/scan%20me?secret='+ qrCodeInput
+    const qrCode = 'otpauth://totp/Overflowing%20Stacks?secret='+ qrCodeInput
 
-    const url = "http://localhost:9006"
+    const url = "https://overflowingstacks.azurewebsites.net"
 
     async function render(){
         if(ran === "not ran"){
             try{
-            const secrectResponse = await axios.get(`${url}/findUser?id=${user.email}`)
+            const secrectResponse = await axios.get(`${url}/users/finduser/${user.email}`)
             setQrCode(secrectResponse.data.secret)
+            console.log(qrCodeInput)
             } catch(error){
             console.log(error)
             }
@@ -42,8 +45,9 @@ return(
                 style={{ width: 256 }}
                 value={qrCode} />
         </div>
+        <a href="https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?hl=en">Google Auth Add On</a>
         <h3>This is your Sercet Key. You can input this directly into Google Authineticator or Scan the Qr Code above.</h3>
-        <h3>Secret Key = {qrCodeInput}</h3>
+        <h3>Secret Key : {qrCodeInput}</h3>
         </center>
     </>
 )
