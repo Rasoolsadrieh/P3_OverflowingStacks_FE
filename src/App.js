@@ -8,7 +8,6 @@ import Welcome from "./components/welcome/welcomepage";
 import CustomerLogin from "./components/login/login";
 import { QrCode } from "./components/twofactor/qrCode";
 import { QrLogin } from "./components/twofactor/qrLogin";
-import Welcome from "./components/welcome/welcomepage";
 
 export const userContext = createContext();
 
