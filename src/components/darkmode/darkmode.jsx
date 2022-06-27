@@ -63,7 +63,7 @@ export default function SwitchAppBar({check,change}) {
           
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Dashboard
+          [ logo here ]
           </Typography>
           
           {/* below renders Switch Dark Mode Switch  */}
