@@ -21,11 +21,12 @@ function App() {
              <Routes>
                 <Route path="/profiledashboard" element={<ProfileDashboard/>} />
                 <Route path="/profile" element={<AvatarProfile/>}/>
-                <Route path="/" element={< Avatar/>} />
+                <Route path="/" element={< Welcome/>} />
                 <Route path="login" element={<CustomerLogin />} />
                 <Route path="" element={<Welcome />} />
                 <Route path="/registerqrcode" element={<QrCode />} />
                 <Route path="/loginqrcode" element={<QrLogin />} />
+                
               </Routes>
          </userContext.Provider>
      </BrowserRouter>
