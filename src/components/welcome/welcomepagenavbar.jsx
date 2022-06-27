@@ -12,7 +12,7 @@ export default function WelcomeNavBar(){
             <h1>Welcome to Overflowing Stacks</h1>
             <Button onClick={() => navigate("/profile")}>Profile</Button>
             <Button onClick={() => navigate("/login")}>Login</Button>
-            <Button onClick={() => navigate("/register")}>Login</Button>
+            <Button onClick={() => navigate("/register")}>Register</Button>
         </nav>
     )
 }
