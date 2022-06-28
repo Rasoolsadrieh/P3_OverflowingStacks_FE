@@ -1,5 +1,5 @@
 
-import { Avatar } from "@mui/material";
+
 import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AvatarProfile from "./components/userprofile/profile-avator";
@@ -11,7 +11,7 @@ export const userContext = createContext();
 
 function App() {
 
-  const [user, setUser] = useState({username: "Guest" })
+  const [user, setUser] = useState({email: "jhomd@mail.com" })
   return (
     <>
     <BrowserRouter>
@@ -22,9 +22,6 @@ function App() {
                 <Route path="/" element={<Welcome />} />
                 <Route path="/profiledashboard" element={<ProfileDashboard/>} />
                 <Route path="/profile" element={<AvatarProfile/>}/>
-              
-                <Route path="/" element={< Avatar/>} />
-                
               </Routes>
          </userContext.Provider>
      </BrowserRouter>
