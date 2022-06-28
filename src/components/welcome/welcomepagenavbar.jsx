@@ -38,7 +38,7 @@ export default function WelcomeNavBar(){
         <nav>
             <h1>Welcome to Overflowing Stacks</h1>
         </nav>
-        </Paper>
-    </ThemeProvider>
+      </Paper>
+      </ThemeProvider>
     )
 }
