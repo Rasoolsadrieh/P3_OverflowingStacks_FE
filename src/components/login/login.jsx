@@ -44,7 +44,7 @@ export default function CustomerLogin() {
     <input size="50" type="password" placeholder="Please enter a password" ref={PasswordInput}></input>
     <br></br>
     <br></br>
-    <Button variant="contained" color="success"  onClick={login}>Login</Button>
+    <Button variant="contained" color="success" onClick={login}>Login</Button>
 </>
 );
 }
