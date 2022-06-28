@@ -7,6 +7,10 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch'
 import { styled } from '@mui/material/styles';
+import Logo from './Overflowing_Stacks.png'
+
+
+
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -28,6 +32,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
           opacity: 1,
           backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
         },
+        
       },
     },
     '& .MuiSwitch-thumb': {
@@ -52,18 +57,28 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       opacity: 1,
       backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
       borderRadius: 20 / 2,
-    },
+    }
   }));
 
 export default function SwitchAppBar({check,change}) {
+  
   return (
+    
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
           
+        {/* <img height={70} src={Logo} alt="Logo" /> */}
+        
+        
+    
+      {/* <picture>
+   <source srcset="https://picsum.photos/id/1019/300" media="(prefers-color-scheme: dark)"/>
+   <img src="https://picsum.photos/id/1035/300" alt="Light Mode Image"/>
+</picture> */}
           
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Dashboard
+          <Typography variant="h6" component="div" color="black" sx={{ flexGrow: 1 }}>
+          
           </Typography>
           
           {/* below renders Switch Dark Mode Switch  */}
@@ -72,7 +87,7 @@ export default function SwitchAppBar({check,change}) {
         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
         onChange={change}
         checked={check}
-        label="Dark Mode"
+        label=""
       />
 
 
@@ -81,4 +96,6 @@ export default function SwitchAppBar({check,change}) {
       </AppBar>
     </Box>
   );
+
+ 
 }

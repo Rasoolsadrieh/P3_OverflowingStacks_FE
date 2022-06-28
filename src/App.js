@@ -11,6 +11,7 @@ function App() {
   const [user, setUser] = useState({username: "Guest" })
   return (
     <>
+    <WelcomeNavBar/>
     <BrowserRouter>
          <userContext.Provider value={[user, setUser]}>
              <Routes>
