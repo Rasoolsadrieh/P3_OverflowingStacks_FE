@@ -13,15 +13,15 @@ export default function CustomerLogin() {
 
   const url = "https://overflowingstacks.azurewebsites.net"
 
-  const CustomerEmailInput = useRef();
+  const EmailInput = useRef();
   const PasswordInput = useRef();
 
   async function login(){
 
     const customer = {
-        
-        email: CustomerEmailInput.current.value,
-        password: PasswordInput.current.value,
+
+        email: EmailInput.current.value,
+       password: PasswordInput.current.value,
     }
     
     try{
@@ -38,7 +38,7 @@ export default function CustomerLogin() {
     <>
     <h4>Please log in below.</h4>
     <br></br>
-    <input size="55" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
+    <input size="55" placeholder="Please enter your email address" ref={EmailInput}></input>
     <br></br>
     <br></br>
     <input size="55" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
