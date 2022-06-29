@@ -39,7 +39,7 @@ export default function AvatorProfile() {
         <>
             <br></br>
             <center>
-            <h4>Wlecome to Profile dashboard</h4>
+            <h4>Welcome to Profile Dashboard</h4>
             <br></br>
             <br></br>
             <label >First Name : </label>
