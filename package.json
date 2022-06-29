@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dicebear/avatars": "^4.10.3",
+    "@dicebear/avatars-male-sprites": "^4.10.3",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.6",
     "@testing-library/jest-dom": "^5.16.4",
@@ -14,8 +19,12 @@
     "i": "^0.3.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-qr-code": "^2.0.7",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-select-country-list": "^2.2.3",
+    "react-social-media-embed": "^2.2.2",
+    "state-pool": "^0.7.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

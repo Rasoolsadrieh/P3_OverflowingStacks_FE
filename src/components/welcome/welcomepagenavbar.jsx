@@ -5,8 +5,8 @@ import { useState } from "react";
 import Logo2 from '../darkmode/Overflowing_Stacks_Dark.png'
 import Logo from '../darkmode/Overflowing_Stacks.png'
 import '../darkmode/darkmode.css'
-
-
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 
 
@@ -27,6 +27,8 @@ export default function WelcomeNavBar(){
 
     if(darkMode === true){setLogoState(!logoState); setLogoLState(!logoLState)}
   else{setLogoState(!logoState); setLogoLState(!logoLState)}}
+  
+    const navigate = useNavigate();
 
     return(
         <ThemeProvider theme={darktheme}>
@@ -37,6 +39,9 @@ export default function WelcomeNavBar(){
       {logoLState && <img className='logo' height={80} src={Logo} />}
         <nav>
             <h1>Welcome to Overflowing Stacks</h1>
+            <Button onClick={() => navigate("/profile")}>Profile</Button>
+            <Button onClick={() => navigate("/login")}>Login</Button>
+            <Button onClick={() => navigate("/register")}>Register</Button>
         </nav>
       </Paper>
       </ThemeProvider>
