@@ -42,10 +42,10 @@ export default function CustomerLogin() {
     <>
     <h4>Please log in below.</h4>
     <br></br>
-    <input size="50" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
+    <input size="55" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
     <br></br>
     <br></br>
-    <input size="50" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
+    <input size="55" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
     <br></br>
     <br></br>
     <Button variant="contained" color="success" onClick={login}>Login</Button>
