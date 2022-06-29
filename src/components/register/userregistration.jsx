@@ -29,7 +29,7 @@ export default function UserRegistration() {
     };
 
     try {
-      const response = await axios.post(`${url}/register`, userprofile);
+      const response = await axios.post(`${url}/users/register`, userprofile);
       console.log(response.data);
       navigate("/userprofile");
     } catch (error) {
