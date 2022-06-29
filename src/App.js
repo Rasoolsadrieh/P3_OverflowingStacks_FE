@@ -1,4 +1,5 @@
 
+import { Avatar } from "@mui/material";
 
 import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -13,13 +14,11 @@ import ProfileDashboard from "./components/userprofile/profile-dashboard";
 import CustomerLogin from "./components/login/login";
 import { QrCode } from "./components/twofactor/qrCode";
 import { QrLogin } from "./components/twofactor/qrLogin";
-
+import UserRegistration from "./components/register/userregistration";
 
 export const userContext = createContext();
 
 function App() {
-
-
   const [darkMode,setDarkMode]= useState(false)
 
   const darktheme=createTheme({
@@ -48,12 +47,12 @@ function App() {
                 <Route path="resetpassword" element={<ResetPassword />} />
                 <Route path="registerqrcode" element={<QrCode />} />
                 <Route path="loginqrcode" element={<QrLogin />} />
+                <Route path="/register" element={<UserRegistration />} />
               </Routes>
          </userContext.Provider>
          </Paper>
     </ThemeProvider>
      </BrowserRouter>
-
     </>
   );
 }
