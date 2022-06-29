@@ -8,8 +8,6 @@ import { userContext } from "../../App";
 
 export default function CustomerLogin() {
 
-  const [user, setUser] = useContext(userContext)
-
   const navigate = useNavigate();
   
 
@@ -29,8 +27,6 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        setUser(user.email)
-        console.log(user.email)
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
