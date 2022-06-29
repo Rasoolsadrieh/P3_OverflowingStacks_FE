@@ -28,26 +28,26 @@ function App() {
     }
   })
 
-  const [user, setUser] = useState({email: "test@test.com" })
+  const [user, setUser] = useState({email: "Guest@mail.com" })
   
   return (
     <>
     
     <BrowserRouter>
-    <WelcomeNavBar/>
+    {/* <WelcomeNavBar/> */}
     <ThemeProvider theme={darktheme}>
         <Paper style= {{height:"250vh"}}>
-        <SwitchAppBar check={darkMode} change={()=>setDarkMode(!darkMode)}/>
+        {/* <SwitchAppBar check={darkMode} change={()=>setDarkMode(!darkMode)}/> */}
          <userContext.Provider value={[user, setUser]}>
              <Routes>
-                <Route path="/profiledashboard" element={<ProfileDashboard/>} />
-                <Route path="/profile" element={<AvatarProfile/>}/>
+                <Route path="profiledashboard" element={<ProfileDashboard/>} />
+                <Route path="profile" element={<AvatarProfile/>}/>
                 <Route path="/" element={< Welcome/>} />
                 <Route path="login" element={<CustomerLogin />} />
                 <Route path="" element={<Welcome />} />
-                <Route path="/resetpassword" element={<ResetPassword />} />
-                <Route path="/registerqrcode" element={<QrCode />} />
-                <Route path="/loginqrcode" element={<QrLogin />} />
+                <Route path="resetpassword" element={<ResetPassword />} />
+                <Route path="registerqrcode" element={<QrCode />} />
+                <Route path="loginqrcode" element={<QrLogin />} />
               </Routes>
          </userContext.Provider>
          </Paper>
