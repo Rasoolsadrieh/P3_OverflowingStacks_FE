@@ -6,8 +6,8 @@ import Logo2 from '../darkmode/Overflowing_Stacks_Dark.png'
 import Logo from '../darkmode/Overflowing_Stacks.png'
 import '../darkmode/darkmode.css'
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 
+import { Button } from "@mui/material";
 
 
 export default function WelcomeNavBar(){

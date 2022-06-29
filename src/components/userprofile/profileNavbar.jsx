@@ -5,11 +5,11 @@ export default function ProfileNavBar(){
 
     const navigate = useNavigate();
 
+
+
     return(
         <>
-            {/* <Button  onClick={() => navigate("/profiledashboard")}>Profile Dashboard</Button> */}
             <Button  onClick={() => navigate("/profile")}>Profile</Button>
-           
         </>
     )
 }
