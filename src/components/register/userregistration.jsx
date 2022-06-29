@@ -34,7 +34,7 @@ export default function UserRegistration() {
     try {
       const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
       console.log(response.data);
-      setUser(response.data)
+      setUser(response.data.email)
       navigate("/registerqrcode");
     } catch (error) {
       console.error(error.response.data);
