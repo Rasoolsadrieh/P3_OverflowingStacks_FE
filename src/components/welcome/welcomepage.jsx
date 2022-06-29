@@ -4,7 +4,9 @@ import '../darkmode/darkmode.css'
 import Image from '../welcome/background_City.jpeg';
 import { Card, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-
+import WelcomeNavBar from "./welcomepagenavbar";
+import { Card, Paper } from "@mui/material";
+import Image from '../welcome/background_City.jpeg';
 
 const styles = {
     heroContainer: {
@@ -18,7 +20,6 @@ const styles = {
       opacity: "80%",
     }
    };
-
 
 
 export default function Welcome(){

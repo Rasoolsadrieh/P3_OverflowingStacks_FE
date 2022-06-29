@@ -23,6 +23,13 @@ export const userContext = createContext();
 
 function App() {
   const [darkMode,setDarkMode]= useState(false)
+  const [logoState, setLogoState] = useState(false)
+  const [logoLState, setLogoLState] = useState(true)
+
+  function logos(){
+
+    if(darkMode === true){setLogoState(!logoState); setLogoLState(!logoLState)}
+  else{setLogoState(!logoState); setLogoLState(!logoLState)}}
 
   const darktheme=createTheme({
     palette: {
@@ -38,8 +45,7 @@ function App() {
 
   const [user, setUser] = useState({email: "Guest@mail.com" })
 
-  const [logoState, setLogoState] = useState(false)
-  const [logoLState, setLogoLState] = useState(true)
+
   
   return (
     <>
