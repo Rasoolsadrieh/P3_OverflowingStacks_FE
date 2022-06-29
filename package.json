@@ -2,6 +2,7 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://overflowingstacks.azurewebsites.net",
   "dependencies": {
     "@dicebear/avatars": "^4.10.3",
     "@dicebear/avatars-male-sprites": "^4.10.3",
