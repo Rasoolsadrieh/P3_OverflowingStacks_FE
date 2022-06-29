@@ -10,6 +10,7 @@ export default function CustomerLogin() {
 
   const navigate = useNavigate();
   
+  const [user,setUser] = useContext(userContext)
 
   const url = "https://overflowingstacksweb.azurewebsites.net/"
 
@@ -27,6 +28,7 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
+        setUser(response.data)
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
