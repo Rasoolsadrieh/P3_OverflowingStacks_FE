@@ -31,11 +31,10 @@ export default function UserRegistration() {
     try {
       const response = await axios.post(`${url}/register`, userprofile);
       console.log(response.data);
-      navigate("/userprofile");
+      navigate("/registerqrcode");
     } catch (error) {
       console.error(error.response.data);
       console.log(error);
-      alert(error.response.data);
     }
   }
 
