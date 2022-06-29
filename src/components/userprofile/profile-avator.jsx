@@ -118,18 +118,27 @@ export default function AvatorProfile() {
   async function updateProfile() {
               
     try {   
-      const response = (await fetch(`${urla}/profile/findAllProfile`));
+      const response = (await fetch(`${urlAzure}/profile/findAllProfile`))
       const profileResponse = await response.json();
       setProfileB(profileResponse[0].email)
       setProfileBody(profileResponse[0].email)
       console.log(profileResponse[0].email)
 
-      const userResponse = (await fetch (`${urla}/users/findAllUsers`))
-      const userResponsj = await userResponse.json();
-      setUserBody(userResponsj[0])
     } catch (error) {
-        // console.error("here is the problem ");
+        console.error("here is the problem1");
     } 
+
+
+    try{
+       
+      const userResponse = (await fetch (`${urlAzure}/users/findAllUsers`))
+      const userResponsj = await userResponse.json();
+      setUserBody(userResponsj)
+      console.log(userResponsj)
+   
+    }catch (error){
+      console.error("here is the problem2");
+    }
 
     const profile = {
         profileName: profileNameInput.current.value,
@@ -138,8 +147,6 @@ export default function AvatorProfile() {
         accountName: accountNameInput.current.value,
         accountNumber:accountNumberInput.current.value,   
     };
-    // console.log(profileB)
-    // console.log(profileBody.fname)
 
     const user = {
         fname: fnameInput.current.value,
@@ -147,15 +154,13 @@ export default function AvatorProfile() {
     }
 
     try {
-      const response = await axios.put(`${urla}/profile/update`, profile);
-      console.log(response.data);
-      
+      const response = await axios.put(`${urlAzure}/profile/update`, profile);
        
     } catch (error) {
-      console.error(error.response.data);
+      console.error("Here is the problem 3");
     }
   }
-  // console.log(userBody);
+
 //---------------------------------------------------------------------------------------------------------------------
   return (
 
@@ -182,18 +187,18 @@ export default function AvatorProfile() {
             <div className="header">
             </div>
             
-            <label >First Name : </label>
+            {/* <label >First Name : </label> */}
             {/* <output value={value} onChange={handleChange}> {profileBody.fname} </output> */}
-            <input value={valuefname} onChange={handleChangefname} placeholder="Enter your First Name" ref={fnameInput}></input>
+            {/* <input value={valuefname} onChange={handleChangefname} placeholder="Enter your First Name" ref={fnameInput}></input> */}
+            {/* <br></br>
             <br></br>
-            <br></br>
-            <br></br>
-            <label >Last Name * : </label>
+            <br></br> */}
+            {/* <label >Last Name * : </label> */}
             {/* <output> {profileBody.lname} </output> */}
-            <input value={valuelname} onChange={handleChangelname} placeholder="Enter Your Last Name" ref={lnameInput}></input>
+            {/* <input value={valuelname} onChange={handleChangelname} placeholder="Enter Your Last Name" ref={lnameInput}></input> */}
+            {/* <br></br>
             <br></br>
-            <br></br>
-            <br></br>
+            <br></br> */}
             <label >Profile Name * : </label>
             <input value={value} onChange={handleChange} placeholder="Enter Profile Name" ref={profileNameInput}></input>
             <br></br>
