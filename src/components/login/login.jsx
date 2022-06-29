@@ -9,8 +9,9 @@ import { userContext } from "../../App";
 export default function CustomerLogin() {
 
   const navigate = useNavigate();
+  
 
-  const url = "https://overflowingstacksweb.azurewebsites.net/"
+  const url = "https://overflowingstacks.azurewebsites.net"
 
   const EmailInput = useRef();
   const PasswordInput = useRef();
@@ -18,7 +19,7 @@ export default function CustomerLogin() {
   async function login(){
 
     const customer = {
-        
+
         email: EmailInput.current.value,
        password: PasswordInput.current.value,
     }
@@ -26,11 +27,10 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        navigate("/profiledashboard");
+        navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
         console.log(error)
-        alert(error.response.data);
     }
 }
 

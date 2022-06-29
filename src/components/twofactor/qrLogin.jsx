@@ -2,9 +2,12 @@ import { useContext, useRef } from "react"
 import { userContext } from "../../App";
 import axios from "axios";
 import { ConstructionOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export function QrLogin(){
     const [user] = useContext(userContext)
+    const navigate = useNavigate();
+
     let codeInput = useRef()
     const url = "https://overflowingstacks.azurewebsites.net"
 
@@ -19,15 +22,7 @@ export function QrLogin(){
         console.log(userData)
         const result = await axios.post("https://overflowingstacks.azurewebsites.net/users/authCheck", userData)
         console.log(result)
-        // const result1 = await fetch(`${url}`, userData, {
-        // });
-        // const data = await result1.json();
-        // console.log(data)
-
-        //  const result2 = await fetch(`${curUrl}`, userData, {
-        //      method: 'GET',
-        //      mode: 'cors'
-        //  });
+        navigate("/profiledashboard")
         
         
         
