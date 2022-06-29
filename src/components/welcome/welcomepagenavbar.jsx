@@ -40,7 +40,6 @@ export default function WelcomeNavBar(){
         <nav>
             <center>
             <h1>Welcome to Overflowing Stacks</h1>
-            
             <Button onClick={() => navigate("/login")}>Login</Button>
             <Button onClick={() => navigate("/register")}>Register</Button>
             </center>
