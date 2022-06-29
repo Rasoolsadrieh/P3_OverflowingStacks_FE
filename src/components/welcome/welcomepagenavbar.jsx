@@ -38,10 +38,11 @@ export default function WelcomeNavBar(){
       {logoState && <img className='logo2' height={80}  src={Logo2} />}
       {logoLState && <img className='logo' height={80} src={Logo} />}
         <nav>
+            <center>
             <h1>Welcome to Overflowing Stacks</h1>
-            <Button onClick={() => navigate("/profile")}>Profile</Button>
             <Button onClick={() => navigate("/login")}>Login</Button>
             <Button onClick={() => navigate("/register")}>Register</Button>
+            </center>
         </nav>
       </Paper>
       </ThemeProvider>
