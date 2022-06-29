@@ -10,7 +10,7 @@ export default function CustomerLogin() {
 
   const navigate = useNavigate();
 
-  const url = "https://somebank.azurewebsites.net"
+  const url = "https://overflowingstacksweb.azurewebsites.net/"
 
   const CustomerEmailInput = useRef();
   const PasswordInput = useRef();
@@ -24,9 +24,9 @@ export default function CustomerLogin() {
     }
     
     try{
-        const response = await axios.post(`${url}/login`, customer)
+        const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        navigate("/home");
+        navigate("/profiledashboard");
     } catch (error) {
         console.error(error.response.data)
         console.log(error)
@@ -36,16 +36,15 @@ export default function CustomerLogin() {
 
   return (
     <>
-    <h4>Welcome back to Zahfosha!<br></br> Please log in below.</h4>
-    <h4><a href="#" class="text-white bg-dark">Use your admin password to log in as an admin!</a></h4>
+    <h4>Please log in below.</h4>
     <br></br>
-    <input size="50" placeholder="Please enter a username" ref={CustomerEmailInput}></input>
-    <br></br>
-    <br></br>
-    <input size="50" type="password" placeholder="Please enter a password" ref={PasswordInput}></input>
+    <input size="50" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
     <br></br>
     <br></br>
-    <Button variant="contained" color="success"  onClick={login}>Login</Button>
+    <input size="50" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
+    <br></br>
+    <br></br>
+    <Button variant="contained" color="success" onClick={login}>Login</Button>
 </>
 );
 }
