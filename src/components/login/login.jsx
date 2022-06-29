@@ -20,15 +20,15 @@ export default function CustomerLogin() {
   async function login(){
 
     const customer = {
-
-        email: EmailInput.current.value,
+       email: EmailInput.current.value,
        password: PasswordInput.current.value,
+
     }
     
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        setUser(response.data.email)
+        setUser({...user, email: CustomerEmailInput.current.value})
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
