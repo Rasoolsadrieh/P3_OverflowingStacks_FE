@@ -20,8 +20,8 @@ export default function CustomerLogin() {
 
     const customer = {
         
-        username: CustomerEmailInput.current.value,
-        userpassword: PasswordInput.current.value,
+        email: CustomerEmailInput.current.value,
+        password: PasswordInput.current.value,
     }
     
     try{
