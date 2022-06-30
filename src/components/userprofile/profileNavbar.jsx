@@ -9,7 +9,11 @@ export default function ProfileNavBar(){
         <>
             {/* <Button  onClick={() => navigate("/profiledashboard")}>Profile Dashboard</Button> */}
             <Button  onClick={() => navigate("/profile")}>Profile</Button>
+<<<<<<< Updated upstream
            
+=======
+            <Button  onClick={() => navigate("/resetpassword")}>Reset Password</Button>
+>>>>>>> Stashed changes
         </>
     )
 }

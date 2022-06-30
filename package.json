@@ -2,7 +2,11 @@
   "name": "test",
   "version": "0.1.0",
   "private": true,
+<<<<<<< Updated upstream
   "dependencies": {
+=======
+   "dependencies": {
+>>>>>>> Stashed changes
     "@dicebear/avatars": "^4.10.3",
     "@dicebear/avatars-male-sprites": "^4.10.3",
     "@emotion/react": "^11.9.3",

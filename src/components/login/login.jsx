@@ -26,7 +26,12 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/login`, customer)
         console.log(response.data)
+<<<<<<< Updated upstream
         navigate("/home");
+=======
+        setUser({...user, email: EmailInput.current.value})
+        navigate("/loginqrcode");
+>>>>>>> Stashed changes
     } catch (error) {
         console.error(error.response.data)
         console.log(error)
