@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube,faTwitter,faLinkedin} from "@fortawesome/free-brands-svg-icons";
-
+import Header from './header/Header';
 import './Avatar.css';
 import { Avatar } from "@mui/material";
 import { storage } from "./firebase";
@@ -149,8 +149,8 @@ export default function AvatorProfile() {
     };
 
     const user = {
-        fname: fnameInput.current.value,
-        lname: lnameInput.current.value,
+        // fname: fnameInput.current.value,
+        // lname: lnameInput.current.value,
     }
 
     try {
@@ -163,9 +163,8 @@ export default function AvatorProfile() {
 
 //---------------------------------------------------------------------------------------------------------------------
   return (
-
     <>
-      <center> <h4>Wlecome to Profile dashboard</h4> </center>
+      <center> <h2 style={{ color:"#949390" }} >Welcome to Your Profile</h2> </center>
       <div >
       {imageUrls.map((url) => {
         return <Avatar alt = "Remy Sharp "src={url} sx ={{width : 150, height : 150}} />;
@@ -180,32 +179,21 @@ export default function AvatorProfile() {
       <Button onClick={uploadFile}>Upload Image</Button>
       </div>
       <div className="App">
+          
           <left>
             <br></br>
             <br></br>
             <br></br>
             <div className="header">
             </div>
-            
-            {/* <label >First Name : </label> */}
-            {/* <output value={value} onChange={handleChange}> {profileBody.fname} </output> */}
-            {/* <input value={valuefname} onChange={handleChangefname} placeholder="Enter your First Name" ref={fnameInput}></input> */}
-            {/* <br></br>
-            <br></br>
-            <br></br> */}
-            {/* <label >Last Name * : </label> */}
-            {/* <output> {profileBody.lname} </output> */}
-            {/* <input value={valuelname} onChange={handleChangelname} placeholder="Enter Your Last Name" ref={lnameInput}></input> */}
-            {/* <br></br>
-            <br></br>
-            <br></br> */}
+  
             <label >Profile Name * : </label>
             <input value={value} onChange={handleChange} placeholder="Enter Profile Name" ref={profileNameInput}></input>
             <br></br>
             <br></br>
             <br></br>
             <label >Email *  :    </label>
-            <input value={valueemail} onChange={handleChangeemail}  placeholder="Enter your email" ref={emailInput}></input>
+            <input value={valueemail} onChange={handleChangeemail}  placeholder="Enter your email" ref={emailInput} ></input>
             <br></br>
             <br></br>
             <br></br>
@@ -240,7 +228,7 @@ export default function AvatorProfile() {
             <br></br>
             <br></br>
   
-            <label >Time zone ? : </label>
+            <label >Time Zone  : </label>
               <select id="timezone" name="timezone">
               <option value="australia">(GMT-5:00) America/New_York</option>
               <option value="canada">(GMT-5:00) America/Jamaica</option>

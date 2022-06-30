@@ -1,6 +1,7 @@
 .social-container {
     background: #eee;
     padding: 25px 50px;
+
   }
 
   a.social {
@@ -41,19 +42,25 @@
 
 label{
 position:left;
-width:30px;
+width: 190px;
 border:0px white;
-margin:50px;
-padding:10px;
+margin-left:120px;
+padding: 4px 20px;
 font-family:AR CENA;
-font-size:20px;
+font-size:  24px;
+display:inline-block;
+color:#64635E;
 
 }
 
 input{
+  font-family: sans-serif;
+  font-size: 18px;
+  color: #000000;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid lightgrey;
-  /* width: 100px */
+  border-bottom: 3px solid #D4D8DD;
+
 }
+
