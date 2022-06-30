@@ -31,23 +31,6 @@ function App() {
   
   return (
     <>
-<<<<<<< HEAD
-      <BrowserRouter>
-        <userContext.Provider value={[user, setUser]}>
-          <Routes>
-            <Route path="/profiledashboard" element={<ProfileDashboard />} />
-            <Route path="/profile" element={<AvatarProfile />} />
-            <Route path="/" element={<Welcome />} />
-            <Route path="login" element={<CustomerLogin />} />
-            <Route path="" element={<Welcome />} />
-            <Route path="/resetpassword" element={<ResetPassword />} />
-            <Route path="/registerqrcode" element={<QrCode />} />
-            <Route path="/loginqrcode" element={<QrLogin />} />
-            <Route path="/users/register" element={<UserRegistration />} />
-          </Routes>
-        </userContext.Provider>
-      </BrowserRouter>
-=======
     
     <BrowserRouter>
     {/* <WelcomeNavBar/> */}
@@ -70,7 +53,6 @@ function App() {
          </Paper>
     </ThemeProvider>
      </BrowserRouter>
->>>>>>> 9b5cc5f6b088ddcdc27c4fa101d8a9f47bcb8c98
     </>
   );
 }

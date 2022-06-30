@@ -31,32 +31,48 @@ export default function UserRegistration() {
       dob: dobInput.current.value
     };
 
-<<<<<<< HEAD
-    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+   // let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    
     if (emailInput.current.value === "" || passwordInput.current.value === "") {
       alert("You need to enter valid email and password");
-    } else if (emailInput.current.value.match(mailformat));
+    }// else if (emailInput.current.value.match(mailformat));
+    else if (fnameInput.current.value === "" || lnameInput.current.value === "") {
+      alert("You need to enter valid First or Last Name");
+    }
+    else if (usernameInput.current.value === "" || !isNaN(usernameInput.current.value) ) {
+      alert("You need to enter valid Username");
+    }
+    else if (phonenumberInput.current.value === "" || isNaN(phonenumberInput.current.value)) {
+      alert("You need to enter valid Phone Number");
+    }
+    else if (dobInput.current.value === "") {
+      alert("You need to enter valid Date of Birth");
+    }
+    else if(!isNaN(emailInput.current.value)){
+      alert("You need to enter valid email");
+    }
+    else if(!isNaN(fnameInput.current.value)){
+      alert("You need to enter valid first name")
+    }
+    else if(!isNaN(lnameInput.current.value)){
+      alert("You need to enter valid last name")
+    }
+    else if(!isNaN(passwordInput.current.value)){
+      alert("Your Password needs to include letters")
+    }
     else {
       try {
         const response = await axios.post(`${url}/users/register`, userprofile);
         console.log(response.data);
-        navigate("/userprofile");
+        navigate("/login");
       } catch (error) {
         console.error(error.response.data);
         console.log(error);
         alert(error.response.data);
       }
-=======
-    try {
-      const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
-      console.log(response.data);
-      setUser({...user, email: CustomerEmailInput.current.value})
-      navigate("/registerqrcode");
-    } catch (error) {
-      console.error(error.response.data);
-      console.log(error);
->>>>>>> 9b5cc5f6b088ddcdc27c4fa101d8a9f47bcb8c98
+
     }
   }
 
@@ -106,7 +122,10 @@ export default function UserRegistration() {
         ref={passwordInput}
       ></input>
       <br></br>
+      <br></br>
 
+      <h7>Please enter your date of birth  </h7>
+      <br></br>
       <input
         size="30"
         type="date"
