@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useContext, useRef, useState } from "react";
-
 import QRCode from "react-qr-code";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
@@ -13,7 +12,6 @@ export function QrCode(){
     const [qrCodeInput, setQrCode] = useState();
     console.log(user.email)
     
-
     
     let ran = "not ran"
     const qrCode = 'otpauth://totp/Overflowing%20Stacks?secret='+ qrCodeInput

@@ -16,7 +16,9 @@ import { v4 } from "uuid";
 import {listAll} from "firebase/storage";
 
 
-export default function AvatorProfile() {
+
+ export default function AvatorProfile() {
+
 
   const [imageUpload, setImageUpload] = useState(null);
   const [imageUrls, setImageUrls] = useState([]);
@@ -100,7 +102,7 @@ export default function AvatorProfile() {
 
   }, []);
 
-//-------------------------------------------------------------------------------------------------------
+
 
   const urla = "http://localhost:9003";
   const urlAzure = "https://overflowingstacks.azurewebsites.net";
@@ -156,7 +158,7 @@ export default function AvatorProfile() {
     }
   }
   // console.log(userBody);
-//---------------------------------------------------------------------------------------------------------------------
+
   return (
 
     <>
@@ -276,4 +278,5 @@ export default function AvatorProfile() {
 
     );
 }
+
 
