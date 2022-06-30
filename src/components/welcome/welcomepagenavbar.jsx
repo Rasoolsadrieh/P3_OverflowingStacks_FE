@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import Image from '../welcome/background_City.jpeg'
 
 
+
 export default function WelcomeNavBar(){
 
   
@@ -16,6 +17,7 @@ export default function WelcomeNavBar(){
 
     return(
         
+
         <>
         </>
         
@@ -33,5 +35,6 @@ export default function WelcomeNavBar(){
        
       
       
+
     )
 }

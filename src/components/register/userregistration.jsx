@@ -6,6 +6,7 @@ import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, Icon
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Image from "/Users/rf/Desktop/P3_OverflowingStacks_FE/src/components/login/login_bg.jpeg";
 import { createTheme } from "@mui/material";
+import { userContext } from "../../App";
 
 const styles = {
   heroContainer: {
@@ -20,6 +21,7 @@ const styles = {
     opacity: "80%",
   }
  };
+
 
 export default function UserRegistration() {
 
@@ -53,6 +55,8 @@ const [values, setValues] = React.useState({
 
   const navigate = useNavigate();
 
+  const [user,setUser] = useContext(userContext)
+
   const url = "https://overflowingstacks.azurewebsites.net";
 
   const emailInput = useRef();
@@ -75,13 +79,13 @@ const [values, setValues] = React.useState({
     };
 
     try {
-      const response = await axios.post(`${url}/register`, userprofile);
+      const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
       console.log(response.data);
-      navigate("/userprofile");
+      setUser({...user, email: CustomerEmailInput.current.value})
+      navigate("/registerqrcode");
     } catch (error) {
       console.error(error.response.data);
       console.log(error);
-      alert(error.response.data);
     }
   }
 
