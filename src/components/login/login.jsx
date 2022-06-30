@@ -8,6 +8,7 @@ import { userContext } from "../../App";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Box, Paper, Card, CardContent, Typography, } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Image from "./login_bg.jpeg";
+import { createTheme } from "@mui/material";
 
 const styles = {
   heroContainer: {
@@ -23,6 +24,14 @@ const styles = {
  };
 
 export default function CustomerLogin() {
+
+  const [darkMode,setDarkMode]= useState(false)
+
+  const darktheme=createTheme({
+    palette: {
+      mode: darkMode? 'dark' : 'light',
+    }
+  })
 
   const [values, setValues] = React.useState({
     password: '',
@@ -75,7 +84,13 @@ export default function CustomerLogin() {
     <center>
     <div className="login">
     <Paper style={styles.heroContainer}>
-    <Card sx={{ bgcolor: '#1E1E1E', boxShadow: 5,
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+    <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{  opacity: "85%", boxShadow: 5,
           borderRadius: 2, width: 400, height: 300 }}>
       <CardContent>
      
@@ -132,7 +147,7 @@ export default function CustomerLogin() {
 
 
 
-    <h4>Please log in below.</h4>
+    {/* <h4>Please log in below.</h4>
     <br></br>
     <input size="50" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
     <br></br>
@@ -140,7 +155,7 @@ export default function CustomerLogin() {
     <input size="50" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
     <br></br>
     <br></br>
-    <Button variant="contained" color="success" onClick={login}>Login</Button>
+    <Button variant="contained" color="success" onClick={login}>Login</Button> */}
 </>
 );
 }

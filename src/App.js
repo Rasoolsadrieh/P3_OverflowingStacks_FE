@@ -54,7 +54,7 @@ function App() {
     
     <ThemeProvider theme={darktheme}>
     {/* <WelcomeNavBar/> */}
-        <Paper style= {{height:"150vh"}}>
+        <Paper style= {{height:"200vh"}}>
         <SwitchAppBar check={darkMode} change={()=>{setDarkMode(!darkMode); logos()}}/>
       {logoState && <img className='logo2' height={80}  src={Logo2} />}
       {logoLState && <img className='logo' height={80} src={Logo} />}
