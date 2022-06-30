@@ -39,9 +39,6 @@ export default function Welcome(){
     navigate("/register")
     console.log(user)
   }
-
-
-
   
     const navigate = useNavigate();
 

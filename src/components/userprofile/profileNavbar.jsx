@@ -16,6 +16,7 @@ export default function ProfileNavBar(){
             <Button onClick={() => navigate("/profile")}>Profile</Button>
             <Button onClick={()=>{navigate("/resetpassword")}}>Reset Password</Button>
             <Button onClick={toWelcome}>Log Out</Button>
+            <Button onClick={()=>{navigate("/registerqrcode")}}>Get QR Code</Button>
         </>
     )
 }
