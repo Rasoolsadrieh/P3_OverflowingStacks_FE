@@ -28,14 +28,21 @@ export default function UserRegistration() {
       dob: dobInput.current.value
     };
 
-    try {
-      const response = await axios.post(`${url}/register`, userprofile);
-      console.log(response.data);
-      navigate("/userprofile");
-    } catch (error) {
-      console.error(error.response.data);
-      console.log(error);
-      alert(error.response.data);
+    let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (emailInput.current.value === "" || passwordInput.current.value === "") {
+      alert("You need to enter valid email and password");
+    } else if (emailInput.current.value.match(mailformat));
+    else {
+      try {
+        const response = await axios.post(`${url}/users/register`, userprofile);
+        console.log(response.data);
+        navigate("/userprofile");
+      } catch (error) {
+        console.error(error.response.data);
+        console.log(error);
+        alert(error.response.data);
+      }
     }
   }
 
@@ -88,6 +95,7 @@ export default function UserRegistration() {
 
       <input
         size="30"
+        type="date"
         placeholder="Please enter your dob"
         ref={dobInput}
       ></input>

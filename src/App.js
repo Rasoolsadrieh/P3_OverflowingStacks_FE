@@ -29,7 +29,7 @@ function App() {
             <Route path="/resetpassword" element={<ResetPassword />} />
             <Route path="/registerqrcode" element={<QrCode />} />
             <Route path="/loginqrcode" element={<QrLogin />} />
-            <Route path="/register" element={<UserRegistration />} />
+            <Route path="/users/register" element={<UserRegistration />} />
           </Routes>
         </userContext.Provider>
       </BrowserRouter>
