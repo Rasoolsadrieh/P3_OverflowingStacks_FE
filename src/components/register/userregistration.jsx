@@ -7,6 +7,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Image from "/Users/rf/Desktop/P3_OverflowingStacks_FE/src/components/login/login_bg.jpeg";
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
+import { isValidFormat } from "@firebase/util";
 
 const styles = {
   heroContainer: {
@@ -68,6 +69,7 @@ const [values, setValues] = React.useState({
   const dobInput = useRef();
 
   async function register() {
+    let valid = true;
     const userprofile = {
       email: emailInput.current.value,
       fname: fnameInput.current.value,
@@ -78,18 +80,95 @@ const [values, setValues] = React.useState({
       dob: dobInput.current.value
     };
 
-    try {
-      const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
-      console.log(response.data);
-      setUser({...user, email: emailInput.current.value})
-      navigate("/registerqrcode");
-    } catch (error) {
-      console.error(error.response.data);
-      console.log(error);
+
+
+   // let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      try {
+      const response = await fetch(`${url}/users/findAllUsers`);
+      const usersPulled = await response.json();
+      console.log(usersPulled);
+      for (let i = 0; i < usersPulled.length; i++ ){
+      if(usersPulled[i].email === emailInput.current.value){
+        console.log("User Exists");
+        valid = false;
+        alert("User already exists");
+        break;
+      }
+        
+      }
+    }catch(e){
+      console.log(null);
+  }
+     if (emailInput.current.value === "" || passwordInput.current.value === "") {
+      valid = false;
+      alert("You need to enter valid email and password");
+    }// else if (emailInput.current.value.match(mailformat));
+    else if (fnameInput.current.value === "" || lnameInput.current.value === "") {
+      valid = false;
+      alert("You need to enter valid First or Last Name");
+    }
+    else if (usernameInput.current.value === "" || !isNaN(usernameInput.current.value) ) {
+      valid = false;
+      alert("You need to enter valid Username");
+    }
+    else if (phonenumberInput.current.value === "" || isNaN(phonenumberInput.current.value)) {
+      valid = false;
+      alert("You need to enter valid Phone Number");
+    }
+    else if (dobInput.current.value === "") {
+      valid = false;
+      alert("You need to enter valid Date of Birth");
+
+    }
+    else if(!isNaN(emailInput.current.value)){
+      valid = false;
+      alert("You need to enter valid email");
+    }
+    else if(!isNaN(fnameInput.current.value)){
+      valid = false;
+      alert("You need to enter valid first name")
+    }
+    else if(!isNaN(lnameInput.current.value)){
+      valid = false;
+      alert("You need to enter valid last name")
+    }
+    else if(!isNaN(passwordInput.current.value)){
+      valid = false;
+      alert("Your Password needs to include letters")
+    }
+    else {
+      if(valid === true){
+      try {
+        const response = await axios.post(`${url}/users/register`, userprofile);
+        console.log(response.data);
+        navigate("/login");
+      } catch (error) {
+        console.error(error.response.data);
+        console.log(error);
+        alert(error.response.data);
+      }
+
+    }
+  }
+  }
+    async function checkUserName(){
+      try {
+        const response = await fetch(`${url}/users/findAllUsers`);
+        const usersPulled = await response.json();
+        console.log(usersPulled);
+        for (let i = 0; i < usersPulled.length; i++ ){
+          
+          console.log(usersPulled[i].email);
+        }
+      }catch(e){
+        console.log(null);
     }
   }
 
+
   return (
+
 
 
 <Paper style={styles.heroContainer}> 
@@ -150,6 +229,15 @@ const [values, setValues] = React.useState({
           <br></br>
 
           <TextField id="outlined-basic" label="Date of Birth" variant="outlined" />
+ //               <h7>Please enter your date of birth  </h7>
+ //     <br></br>
+//      <input
+//        size="30"
+ //       type="date"
+//        placeholder="Please enter your dob"
+//        ref={dobInput}
+ //     ></input>
+ //     <br></br>
           
         </FormControl>
           <br></br>
@@ -224,5 +312,7 @@ const [values, setValues] = React.useState({
     //     Sign Up
     //   </Button>
     // </div>
+
   );
 }
+
