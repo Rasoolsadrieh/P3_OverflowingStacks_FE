@@ -1,0 +1,13 @@
+.photo{
+
+height: 300px;
+width: 300px;
+border-radius: 50%;
+border-style: ridge;
+border-color: rgb(101, 99, 99);
+border-width: 4px;
+object-fit: contain;
+
+
+}
+
