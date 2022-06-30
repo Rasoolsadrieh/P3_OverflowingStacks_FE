@@ -109,9 +109,9 @@ export default function CustomerLogin() {
           <Typography sx={{  }} color="text.secondary" gutterBottom>
           Please log in below
       </Typography>
-          <TextField id="outlined-basic" label="Please enter your Email" variant="outlined" inputRef={CustomerEmailInput} />
+          <TextField id="outlined-basic" variant="outlined" inputRef={EmailInput} />
           <br></br>
-          <FormControl sx={{ m: 1, width: '28ch' }} variant="outlined" inputRef={CustomerEmailInput}>
+          <FormControl sx={{ m: 1, width: '28ch' }} variant="outlined" inputRef={EmailInput}>
           <InputLabel htmlFor="outlined-adornment-password">Please enter Password </InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
