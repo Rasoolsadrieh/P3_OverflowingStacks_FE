@@ -73,7 +73,7 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        setUser({...user, email: CustomerEmailInput.current.value})
+        setUser({...user, email: EmailInput.current.value})
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
@@ -109,9 +109,9 @@ export default function CustomerLogin() {
           <Typography sx={{  }} color="text.secondary" gutterBottom>
           Please log in below
       </Typography>
-          <TextField id="outlined-basic" label="Please enter your Email" variant="outlined" inputRef={CustomerEmailInput} />
+          <TextField id="outlined-basic" variant="outlined" inputRef={EmailInput} />
           <br></br>
-          <FormControl sx={{ m: 1, width: '28ch' }} variant="outlined" inputRef={CustomerEmailInput}>
+          <FormControl sx={{ m: 1, width: '28ch' }} variant="outlined" inputRef={EmailInput}>
           <InputLabel htmlFor="outlined-adornment-password">Please enter Password </InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"

@@ -10,6 +10,7 @@ export default function ProfileNavBar(){
     return(
         <>
             <Button  onClick={() => navigate("/profile")}>Profile</Button>
+            <Button onClick={()=>{navigate("/resetpassword")}}>Reset Password</Button>
         </>
     )
 }
