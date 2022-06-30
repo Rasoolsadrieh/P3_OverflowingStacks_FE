@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "/Users/rf/Desktop/P3_OverflowingStacks_FE/src/components/login/login_bg.jpeg";
+import Image from "./login_bg.jpeg";
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
 import { isValidFormat } from "@firebase/util";
@@ -56,7 +56,7 @@ const [values, setValues] = React.useState({
 
   const navigate = useNavigate();
 
-  const [user,setUser] = useContext(userContext)
+  const [user,setUser] = React.useContext(userContext)
 
   const url = "https://overflowingstacks.azurewebsites.net";
 
@@ -169,23 +169,13 @@ const [values, setValues] = React.useState({
 
   return (
 
+    <Paper style={styles.heroContainer}> 
+            
+          <center><div className="App">
+          
 
-
-<Paper style={styles.heroContainer}> 
         
-      <center><div className="App">
-      
     
-
-      <center>
-     <br></br>
-     <br></br>
-     <br></br>
-   <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ boxShadow: 5,
-          borderRadius: 2, width: 400, height: 700 }}>
-      <CardContent>
-     
-     
           <center>
           <Box
       component="form"
@@ -315,4 +305,75 @@ const [values, setValues] = React.useState({
 
   );
 }
+
+
+         <br></br>
+         <br></br>
+         <br></br>
+       <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ boxShadow: 5,
+              borderRadius: 2, width: 400, height: 700 }}>
+          <CardContent>
+         
+         
+              <center>
+              <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+              <Typography sx={{  }} color="text.secondary" gutterBottom>
+              Please Register below
+          </Typography>
+              <TextField id="outlined-basic" label="Email" variant="outlined" inputRef={emailInput}/>
+              <TextField id="outlined-basic" label="First Name" variant="outlined" inputRef={fnameInput}/>
+              <TextField id="outlined-basic" label="Last Name" variant="outlined" inputRef={lnameInput}/>
+              <TextField id="outlined-basic" label="Phone Number" variant="outlined" inputRef={phonenumberInput}/>
+              <TextField id="outlined-basic" label="Username" variant="outlined" inputRef={usernameInput}/>
+              
+              <br></br>
+              <FormControl sx={{ m: 1, width: '28ch' }} variant="outlined">
+              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={values.showPassword ? 'text' : 'password'}
+                value={values.password}
+                inputRef={passwordInput}
+                onChange={handleChange('password')}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+              <br></br>
+    
+              <TextField id="outlined-basic" label="Date of Birth" variant="outlined" inputRef={dobInput}/>
+              
+            </FormControl>
+              <br></br>
+              <br></br>
+              <Button variant='contained' onClick={register}>Register</Button>
+              
+              </Box>
+              </center>
+              </CardContent>
+              </Card>
+              </center>
+              </div>
+              </center>
+              </Paper>
+    
+      );
+    }
 
