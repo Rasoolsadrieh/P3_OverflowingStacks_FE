@@ -2,13 +2,14 @@ import axios from "axios";
 import React, { useContext, useRef, useState } from "react";
 
 import QRCode from "react-qr-code";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 
 export function QrCode(){
 
-
+    
     const [user] = useContext(userContext)
-
+    const navigate = useNavigate();
     const [qrCodeInput, setQrCode] = useState();
     console.log(user.email)
     
@@ -33,6 +34,8 @@ export function QrCode(){
         
     }
 
+    //todo ADD Button
+
 return(
     
     <>
@@ -48,6 +51,7 @@ return(
         <a target="_blank" rel="noopener noreferrer" href="https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?hl=en">Google Auth Add On</a>
         <h3>This is your Sercet Key. You can input this directly into Google Authineticator or Scan the Qr Code above.</h3>
         <h3>Secret Key : {qrCodeInput}</h3>
+        <button onClick={()=>{navigate("/profiledashboard")}}>Setup Profile</button>
         </center>
     </>
 )
