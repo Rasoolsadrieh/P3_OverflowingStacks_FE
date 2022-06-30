@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 export default function Payment() {
   
 
+
     const url = "https://overflowingstacksweb.azurewebsites.net/";
     
     const navigate = useNavigate();
     //const [user] = useContext(userContext)
+
 
     const [showPay, setPay] = useState(false);
 
@@ -22,8 +24,10 @@ export default function Payment() {
   
     async function transferMoneyNow() {
 
+
         const profileResponse = await axios.get(`${url}/findProfile?findProfile=${profileNameInput.current.value}`)
         const receiverProfileResponse = await axios.get(`${url}/findProfile?findProfile=${receiverProfileInput.current.value}`)
+
         
         const user = {
 
@@ -46,7 +50,9 @@ export default function Payment() {
             balance: receiverProfileResponse.data.balance + paymentInput.current.value,
             accountName: receiverProfileResponse.data.accountName,
             accountNumber: receiverProfileResponse.data.accountNumber,
-              
+
+            isRecieved: true,  
+
          };
                 
              
