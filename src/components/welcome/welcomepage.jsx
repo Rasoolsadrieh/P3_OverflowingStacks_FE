@@ -5,6 +5,8 @@ import Image from '../welcome/background_City.jpeg';
 import { Card, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import WelcomeNavBar from "./welcomepagenavbar";
+import { userContext } from "../../App";
+import { useContext } from "react";
 
 
 const styles = {
@@ -22,6 +24,10 @@ const styles = {
 
 
 export default function Welcome(){
+  const [user,setUser] = useContext(userContext)
+  setUser({ ...user, email: "Guest" });
+  console.log(user.email)
+
 
 
   
