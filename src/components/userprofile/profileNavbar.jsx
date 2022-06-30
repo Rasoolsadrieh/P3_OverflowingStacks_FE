@@ -5,11 +5,14 @@ export default function ProfileNavBar(){
 
     const navigate = useNavigate();
 
+
+
     return(
         <>
-            {/* <Button  onClick={() => navigate("/profiledashboard")}>Profile Dashboard</Button> */}
-            <Button  onClick={() => navigate("/profile")}>Profile</Button>
-           
+            <Button onClick={() => navigate("/profile")}>Profile</Button>
+            <Button onClick={()=>{navigate("/resetpassword")}}>Reset Password</Button>
+            <Button onClick={()=>{navigate("/Welcome")}}>Logout</Button>
+            <Button onClick={()=>{navigate("/registerqrcode")}}>Get QR Code</Button>
         </>
     )
 }
