@@ -132,6 +132,7 @@ const [values, setValues] = React.useState({
                 id="outlined-adornment-password"
                 type={values.showPassword ? 'text' : 'password'}
                 value={values.password}
+                inputRef={passwordInput}
                 onChange={handleChange('password')}
                 endAdornment={
                   <InputAdornment position="end">
