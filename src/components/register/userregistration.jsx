@@ -81,7 +81,7 @@ const [values, setValues] = React.useState({
     try {
       const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
       console.log(response.data);
-      setUser({...user, email: CustomerEmailInput.current.value})
+      setUser({...user, email: emailInput.current.value})
       navigate("/registerqrcode");
     } catch (error) {
       console.error(error.response.data);

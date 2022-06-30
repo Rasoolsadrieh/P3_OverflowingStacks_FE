@@ -73,7 +73,7 @@ export default function CustomerLogin() {
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
-        setUser({...user, email: CustomerEmailInput.current.value})
+        setUser({...user, email: EmailInput.current.value})
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
