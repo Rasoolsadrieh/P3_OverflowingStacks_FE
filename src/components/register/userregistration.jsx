@@ -1,11 +1,14 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { userContext } from "../../App";
 
 export default function UserRegistration() {
   const navigate = useNavigate();
+
+  const [user,setUser] = useContext(userContext)
 
   const url = "https://overflowingstacks.azurewebsites.net";
 
@@ -29,13 +32,13 @@ export default function UserRegistration() {
     };
 
     try {
-      const response = await axios.post(`${url}/register`, userprofile);
+      const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
       console.log(response.data);
-      navigate("/userprofile");
+      setUser({...user, email: CustomerEmailInput.current.value})
+      navigate("/registerqrcode");
     } catch (error) {
       console.error(error.response.data);
       console.log(error);
-      alert(error.response.data);
     }
   }
 

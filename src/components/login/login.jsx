@@ -10,23 +10,25 @@ export default function CustomerLogin() {
 
   const navigate = useNavigate();
   
+  const [user,setUser] = useContext(userContext)
 
-  const url = "https://overflowingstacksweb.azurewebsites.net/"
+  const url = "https://overflowingstacks.azurewebsites.net"
 
-  const CustomerEmailInput = useRef();
+  const EmailInput = useRef();
   const PasswordInput = useRef();
 
   async function login(){
 
     const customer = {
-        
-        username: CustomerEmailInput.current.value,
-        userpassword: PasswordInput.current.value,
+       email: EmailInput.current.value,
+       password: PasswordInput.current.value,
+
     }
     
     try{
         const response = await axios.post(`${url}/auth`, customer)
         console.log(response.data)
+        setUser({...user, email: CustomerEmailInput.current.value})
         navigate("/loginqrcode");
     } catch (error) {
         console.error(error.response.data)
@@ -38,10 +40,10 @@ export default function CustomerLogin() {
     <>
     <h4>Please log in below.</h4>
     <br></br>
-    <input size="50" placeholder="Please enter your email address" ref={CustomerEmailInput}></input>
+    <input size="55" placeholder="Please enter your email address" ref={EmailInput}></input>
     <br></br>
     <br></br>
-    <input size="50" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
+    <input size="55" type="password" placeholder="Please enter your password" ref={PasswordInput}></input>
     <br></br>
     <br></br>
     <Button variant="contained" color="success" onClick={login}>Login</Button>

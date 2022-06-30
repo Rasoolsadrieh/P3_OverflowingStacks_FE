@@ -1,4 +1,6 @@
+
 import { Avatar } from "@mui/material";
+
 import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./components/welcome/welcomepage";
@@ -45,7 +47,7 @@ function App() {
                 <Route path="resetpassword" element={<ResetPassword />} />
                 <Route path="registerqrcode" element={<QrCode />} />
                 <Route path="loginqrcode" element={<QrLogin />} />
-                <Route path="/register" element={<UserRegistration />} />
+                <Route path="register" element={<UserRegistration />} />
               </Routes>
          </userContext.Provider>
          </Paper>
