@@ -209,6 +209,7 @@ const [values, setValues] = React.useState({
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={values.showPassword ? 'text' : 'password'}
+                inputRef={passwordInput}
                 value={values.password}
                 onChange={handleChange('password')}
                 endAdornment={
