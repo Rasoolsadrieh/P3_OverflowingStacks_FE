@@ -1,11 +1,14 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { userContext } from "../../App";
 
 export default function UserRegistration() {
   const navigate = useNavigate();
+
+  const [user,setUser] = useContext(userContext)
 
   const url = "https://overflowingstacks.azurewebsites.net";
 
@@ -28,6 +31,7 @@ export default function UserRegistration() {
       dob: dobInput.current.value
     };
 
+<<<<<<< HEAD
     let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if (emailInput.current.value === "" || passwordInput.current.value === "") {
@@ -43,6 +47,16 @@ export default function UserRegistration() {
         console.log(error);
         alert(error.response.data);
       }
+=======
+    try {
+      const response = await axios.post(`https://overflowingstacks.azurewebsites.net/users/register`, userprofile);
+      console.log(response.data);
+      setUser({...user, email: CustomerEmailInput.current.value})
+      navigate("/registerqrcode");
+    } catch (error) {
+      console.error(error.response.data);
+      console.log(error);
+>>>>>>> 9b5cc5f6b088ddcdc27c4fa101d8a9f47bcb8c98
     }
   }
 

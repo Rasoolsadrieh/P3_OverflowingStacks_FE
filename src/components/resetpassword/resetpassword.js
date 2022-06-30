@@ -1,9 +1,11 @@
 import axios from "axios";
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 export default function ResetPassword() {
+
+    const [body, setBody] = useState();
     
-    const url = "http://localhost:9005/users/resetPassword";
+    const url = "http://overflowingstacks.azurewebsites.net/users/resetPassword";
     
     const a = useRef();
     const b  = useRef();
@@ -20,6 +22,7 @@ export default function ResetPassword() {
         try {
             const response = await axios.put(`${url}`, rpc);
             console.log(response.data);
+            setBody(response.data);
         
         }
         catch (error) {
@@ -34,6 +37,7 @@ export default function ResetPassword() {
         <input placeholder="Enter old password" ref={b}></input>
         <input placeholder="Enter new password" ref={c}></input>
         <button onClick={resetpassword}>RESET PASSWORD</button>
+        <h3>{body}</h3>
     </>
     )
 }

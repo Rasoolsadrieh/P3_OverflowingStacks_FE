@@ -1,12 +1,16 @@
+
 import { Avatar } from "@mui/material";
+
 import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import Welcome from "./components/welcome/welcomepage";
+import WelcomeNavBar from "./components/welcome/welcomepagenavbar";
+import SwitchAppBar from "./components/darkmode/darkmode";
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { Paper } from "@mui/material";
 import ResetPassword from "./components/resetpassword/resetpassword";
-
 import AvatarProfile from "./components/userprofile/profile-avator";
 import ProfileDashboard from "./components/userprofile/profile-dashboard";
-import Welcome from "./components/welcome/welcomepage";
 import CustomerLogin from "./components/login/login";
 import { QrCode } from "./components/twofactor/qrCode";
 import { QrLogin } from "./components/twofactor/qrLogin";
@@ -15,9 +19,19 @@ import UserRegistration from "./components/register/userregistration";
 export const userContext = createContext();
 
 function App() {
-  const [user, setUser] = useState({ email: "test@test.com" });
+  const [darkMode,setDarkMode]= useState(false)
+
+  const darktheme=createTheme({
+    palette: {
+      mode: darkMode? 'dark' : 'light',
+    }
+  })
+
+  const [user, setUser] = useState({email: "Guest@mail.com" })
+  
   return (
     <>
+<<<<<<< HEAD
       <BrowserRouter>
         <userContext.Provider value={[user, setUser]}>
           <Routes>
@@ -33,6 +47,30 @@ function App() {
           </Routes>
         </userContext.Provider>
       </BrowserRouter>
+=======
+    
+    <BrowserRouter>
+    {/* <WelcomeNavBar/> */}
+    <ThemeProvider theme={darktheme}>
+        <Paper style= {{height:"250vh"}}>
+        {/* <SwitchAppBar check={darkMode} change={()=>setDarkMode(!darkMode)}/> */}
+         <userContext.Provider value={[user, setUser]}>
+             <Routes>
+                <Route path="profiledashboard" element={<ProfileDashboard/>} />
+                <Route path="profile" element={<AvatarProfile/>}/>
+                <Route path="/" element={< Welcome/>} />
+                <Route path="login" element={<CustomerLogin />} />
+                <Route path="" element={<Welcome />} />
+                <Route path="resetpassword" element={<ResetPassword />} />
+                <Route path="registerqrcode" element={<QrCode />} />
+                <Route path="loginqrcode" element={<QrLogin />} />
+                <Route path="register" element={<UserRegistration />} />
+              </Routes>
+         </userContext.Provider>
+         </Paper>
+    </ThemeProvider>
+     </BrowserRouter>
+>>>>>>> 9b5cc5f6b088ddcdc27c4fa101d8a9f47bcb8c98
     </>
   );
 }
