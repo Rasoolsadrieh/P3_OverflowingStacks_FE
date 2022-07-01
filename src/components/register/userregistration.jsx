@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "../login/login_bg.jpeg";
+import Image from "./bg_image.jpeg";
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
 import { isValidFormat } from "@firebase/util";
@@ -181,7 +181,7 @@ const [values, setValues] = React.useState({
          <br></br>
          <br></br>
          <br></br>
-       <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ boxShadow: 5,
+       <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
               borderRadius: 2, width: 400, height: 700 }}>
           <CardContent>
          
