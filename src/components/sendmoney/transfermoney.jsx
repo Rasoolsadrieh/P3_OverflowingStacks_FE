@@ -16,12 +16,13 @@ export default function Payment() {
 
 
     const [showPay, setPay] = useState(false);
+    const [negativeBalance, setNegative] = useState(false);
 
     const profileNameInput = useRef();
     const receiverProfileInput =useRef();
     const paymentInput = useRef();
     
-     
+     let isValid = true;
     
   
     async function transferMoneyNow() {
@@ -29,7 +30,14 @@ export default function Payment() {
 
         const profileResponse = await axios.get(`${url}/profile/findProfile?profileName=${profileNameInput.current.value}`)
         const receiverProfileResponse = await axios.get(`${url}/profile/findProfile?profileName=${receiverProfileInput.current.value}`)
+        console.log(profileResponse.data.balance - paymentInput.current.value)
+        
+       if(profileResponse.data.balance - paymentInput.current.value <= 0 ||  paymentInput.current.value <= 0 ){
+        isValid = false;
+        setPay(false);
+        setNegative(true);
 
+       }else{ isValid = true;}
         
         const sender = {
 
@@ -41,27 +49,31 @@ export default function Payment() {
               
          };
 
+         
+        
+
          const receiver = {
 
             profileName: receiverProfileResponse.data.profileName,
             email: receiverProfileResponse.data.email,
-            balance: receiverProfileResponse.data.balance + paymentInput.current.value,
+            balance: parseInt(receiverProfileResponse.data.balance) + parseInt(paymentInput.current.value),
             accountName: receiverProfileResponse.data.accountName,
             accountNumber: receiverProfileResponse.data.accountNumber,
 
-             
-
          };
-                
+             
              
     
         try {
+            if(isValid === true){
             const response = await axios.put(`${url}/profile/updateProfile`, sender);
             const response2 = await axios.put(`${url}/profile/updateProfile`, receiver);
+
             console.log(response.data);
             console.log(response2.data);
-            setPay(!showPay)
-
+            setPay(true);
+            setNegative(false);
+            }
 
          
         } catch (error) {
@@ -85,6 +97,7 @@ export default function Payment() {
                 <input  placeholder="Enter your payment amount" ref={paymentInput}></input>
                 <br></br>
                 <br></br>
+                {negativeBalance && <h4>your money is less than what you are trying to send, please lower the amount or deposit to your account!</h4>}
                 {showPay && <h4>your money transfer has been sent!</h4>}
                 <br></br>
                 <br></br>
