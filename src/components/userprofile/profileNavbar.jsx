@@ -5,7 +5,9 @@ export default function ProfileNavBar(){
 
     const navigate = useNavigate();
 
-
+    async function toWelcome(){
+        navigate("/Welcome")
+    }
 
     return(
         <>
