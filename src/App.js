@@ -18,6 +18,7 @@ import UserRegistration from "./components/register/userregistration";
 import Logo2 from './components/darkmode/Overflowing_Stacks_Dark.png'
 import Logo from './components/darkmode/Overflowing_Stacks.png'
 import './components/darkmode/darkmode.css'
+import Payment from "./components/sendmoney/transfermoney";
 
 export const userContext = createContext();
 
@@ -74,6 +75,8 @@ function App() {
                 <Route path="loginqrcode" element={<QrLogin />} />
                 <Route path="register" element={<UserRegistration />} />
                 <Route path="welcome" element={<Welcome />} />
+                <Route path="sendmoney" element={<Payment />} />
+
               </Routes>
          </userContext.Provider>
          </Paper>

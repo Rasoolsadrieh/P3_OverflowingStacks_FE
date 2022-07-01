@@ -1,11 +1,18 @@
 import axios from "axios";
-import { useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
+import { useNavigate } from "react-router-dom";
+import { userContext } from "../../App";
 
 export default function ResetPassword() {
 
+    const [user] = useContext(userContext)
+
     const [body, setBody] = useState();
-    
-    const url = "http://overflowingstacks.azurewebsites.net/users/resetPassword";
+
+    const navigate = useNavigate();
+
+
+    const url = "https://overflowingstacks.azurewebsites.net/users/resetPassword";
     
     const a = useRef();
     const b  = useRef();
@@ -14,7 +21,7 @@ export default function ResetPassword() {
     async function resetpassword() {
 
         const rpc = {
-            email: a.current.value,
+            email: user.email,
             password: b.current.value,
             newpassword: c.current.value
         }
@@ -23,7 +30,7 @@ export default function ResetPassword() {
             const response = await axios.put(`${url}`, rpc);
             console.log(response.data);
             setBody(response.data);
-        
+
         }
         catch (error) {
             console.error(error);
@@ -33,11 +40,22 @@ export default function ResetPassword() {
 
     return (
     <>
-        <input placeholder="Enter email" ref={a}></input>
+        <text>{user.email}</text>
+        <br></br>
+        <br></br>
         <input placeholder="Enter old password" ref={b}></input>
+        <br></br>
+        <br></br>
         <input placeholder="Enter new password" ref={c}></input>
+        <br></br>
+        <br></br>
         <button onClick={resetpassword}>RESET PASSWORD</button>
+        <br></br>
+        <br></br>
         <h3>{body}</h3>
+        <br></br>
+        <br></br>
+        <button onClick={()=>{navigate("/profiledashboard")}}>Back To Profile</button>
     </>
     )
 }
