@@ -7,9 +7,10 @@ import { Link } from "@mui/material";
 //import { FixedSizeList } from 'react-window';
 import Badge from "@mui/material/Badge";
 import List from '@mui/material/List';
-
+import { toast } from 'react-toastify';
 import { ListGroup } from "react-bootstrap";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 
 export default function Notifications() {
@@ -19,7 +20,7 @@ export default function Notifications() {
     const [menuRecent, setMenuRecent] = useState(true);
     const [user, setUser] = useContext(userContext);
     const url = "https://overflowingstacks.azurewebsites.net";
-    console.log(user, "hello")
+  
 
     useEffect(() => {
         findAll();
@@ -115,11 +116,24 @@ export default function Notifications() {
          
     },[moneyRecieved])
    
+    
+        const notify = () => {
+            toast.success('🦄 Wow so easy!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });}
     return (
     
        <>
        <div>
+       <Button >test</Button>
          <h2>Notifications</h2>
+         
             <List
         sx={{
             width: '100%',
@@ -145,6 +159,7 @@ export default function Notifications() {
         </ListGroup>
         </List>
         </div>
-        
+       
         </>
     )}
+    

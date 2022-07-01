@@ -4,9 +4,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "/Users/rf/Desktop/P3_OverflowingStacks_FE/src/components/login/login_bg.jpeg";
+import Image from "../login/login_bg.jpeg"
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
+import { useContext } from "react";
 
 const styles = {
   heroContainer: {
