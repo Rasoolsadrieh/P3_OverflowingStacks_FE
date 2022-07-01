@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "./login_bg.jpeg";
+import Image from "../login/login_bg.jpeg";
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
 import { isValidFormat } from "@firebase/util";
@@ -247,4 +247,3 @@ const [values, setValues] = React.useState({
     
       );
     }
-

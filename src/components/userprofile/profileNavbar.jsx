@@ -9,11 +9,9 @@ export default function ProfileNavBar(){
         navigate("/Welcome")
     }
 
-
-
     return(
         <>
-            <Button onClick={() => navigate("/profile")}>Profile</Button>
+            <Button  onClick={() => navigate("/profile")}>Profile</Button>
             <Button onClick={()=>{navigate("/resetpassword")}}>Reset Password</Button>
             <Button onClick={()=>{navigate("/registerqrcode")}}>Get QR Code</Button>
             <Button onClick={()=>{navigate("/sendmoney")}}>Send Money</Button>
