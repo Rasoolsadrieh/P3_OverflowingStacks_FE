@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useRef, useState } from "react";
+import { useRef, useState ,useContext} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
@@ -56,7 +56,8 @@ const [values, setValues] = React.useState({
 
   const navigate = useNavigate();
 
-  const [user,setUser] = React.useContext(userContext)
+  const [user,setUser] = useContext(userContext)
+  console.log(user, "hello")
 
   const url = "https://overflowingstacks.azurewebsites.net";
 
