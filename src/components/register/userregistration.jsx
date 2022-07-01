@@ -139,9 +139,10 @@ const [values, setValues] = React.useState({
     }
     else {
       if(valid === true){
+        setUser({...user, email: emailInput.current.value})
       try {
         const response = await axios.post(`${url}/users/register`, userprofile);
-        console.log(response.data);
+        console.log(response.data)
         navigate("/registerqrcode");
       } catch (error) {
         console.error(error.response.data);
