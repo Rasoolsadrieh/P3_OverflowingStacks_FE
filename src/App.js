@@ -73,6 +73,7 @@ function App() {
                 <Route path="registerqrcode" element={<QrCode />} />
                 <Route path="loginqrcode" element={<QrLogin />} />
                 <Route path="register" element={<UserRegistration />} />
+                <Route path="welcome" element={<Welcome />} />
               </Routes>
          </userContext.Provider>
          </Paper>
