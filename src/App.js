@@ -46,7 +46,7 @@ function App() {
     if(darkMode === true){setLogoState(!logoState); setLogoLState(!logoLState)}
   else{setLogoState(!logoState); setLogoLState(!logoLState)}}
 
-  const [user, setUser] = useState({email: "Guest@mail.com" })
+  const [user, setUser] = useState({email: "Guest@mail.com", isReceived: false })
 
 
   
