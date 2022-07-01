@@ -1,13 +1,34 @@
 import axios from "axios";
-import { useRef, useState, useContext } from "react";
-import { Button } from "@mui/material";
+import { useRef, useState, useContext, } from "react";
+import { Button, Paper, Card, createTheme, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
+import Image from "./bg_img2.jpg";
 
+const styles = {
+    heroContainer: {
+      height: "100vh",
+      backgroundImage: `url(${Image})`,
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      BackgroundSize: 'cover',
+      width: "100%",
+      margin: 0,
+      padding: 10,
+      opacity: "85%",
+    }
+   };
 
 export default function Payment() {
   
 
+    const [darkMode,setDarkMode]= useState(false)
+
+    const darktheme=createTheme({
+      palette: {
+        mode: darkMode? 'dark' : 'light',
+      }
+    })
 
     const url = "https://overflowingstacks.azurewebsites.net";
     
@@ -85,27 +106,37 @@ export default function Payment() {
 
     return (
         <>
-                
+                <Paper style={styles.heroContainer}>
                 <center>
-                <h4>You can pay your balance here.</h4>
-                <h4>{user.email}</h4>
-                <br></br>  
-                <input  placeholder="Confirm your Profile Name" ref={profileNameInput}></input>
-                <br></br>
-                <input  placeholder="Enter The profile name of the Receiver" ref={receiverProfileInput}></input>
-                <br></br>
-                <input  placeholder="Enter your payment amount" ref={paymentInput}></input>
                 <br></br>
                 <br></br>
-                {negativeBalance && <h4>your money is less than what you are trying to send, please lower the amount or deposit to your account!</h4>}
-                {showPay && <h4>your money transfer has been sent!</h4>}
+                <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
+              borderRadius: 2, width: 400, height: 600 }}>
+                <br></br>
+                <Typography>Transfer Money Below</Typography>
+                <br></br>
+                <Typography>{user.email}</Typography>
+                <br></br> 
+                <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Confirm your Name" variant="outlined" inputRef={profileNameInput}/> 
                 <br></br>
                 <br></br>
-                <Button  onClick={transferMoneyNow}>Send Money</Button>
+                <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter Name of the Receiver" variant="outlined" inputRef={receiverProfileInput}/> 
                 <br></br>
                 <br></br>
-                <Button  onClick={() => navigate("/profiledashboard")}>Back</Button>       
-                </center>        
+                <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter your Payment Amount" variant="outlined" inputRef={paymentInput}/>
+                <br></br>
+                <br></br>
+                {negativeBalance && <h4>Your money is less than what you are trying to send, please lower the amount or deposit to your account!</h4>}
+                {showPay && <h4>Your money transfer has been sent!</h4>}
+                <br></br>
+                <br></br>
+                <Button variant='contained' onClick={transferMoneyNow}>Send Money</Button>
+                <br></br>
+                <br></br>
+                <Button variant='contained' onClick={() => navigate("/profiledashboard")}>Back</Button>       
+                </Card>
+                </center>  
+                </Paper>      
         </>
     );
 }

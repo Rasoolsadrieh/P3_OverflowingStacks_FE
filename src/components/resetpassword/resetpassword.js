@@ -71,7 +71,7 @@ export default function ResetPassword() {
         <br></br>
         <center>
         <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
-              borderRadius: 2, width: 400, height: 400 }}>
+              borderRadius: 2, width: 400, height: 520 }}>
         <br></br>
             <Box
           component="form"
@@ -96,8 +96,11 @@ export default function ResetPassword() {
         <br></br>
         <br></br>
         <Button variant='contained' onClick={resetpassword}>RESET PASSWORD</Button>
+        <br></br>
+        <br></br>
+        <Button variant='contained' onClick={() => navigate("/profiledashboard")}>Back</Button> 
         </center>
-        <h3>{body}</h3>
+        <Typography>{body}</Typography>
         </Box>
         </Card>
         </center>
