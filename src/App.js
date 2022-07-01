@@ -76,7 +76,6 @@ function App() {
                 <Route path="register" element={<UserRegistration />} />
                 <Route path="welcome" element={<Welcome />} />
                 <Route path="sendmoney" element={<Payment />} />
-
               </Routes>
          </userContext.Provider>
          </Paper>
