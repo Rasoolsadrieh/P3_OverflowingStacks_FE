@@ -7,10 +7,11 @@ import { Link } from "@mui/material";
 //import { FixedSizeList } from 'react-window';
 import Badge from "@mui/material/Badge";
 import List from '@mui/material/List';
-import { toast } from 'react-toastify';
 import { ListGroup } from "react-bootstrap";
 import axios from "axios";
-import { Button } from "@mui/material";
+
+
+
 
 
 export default function Notifications() {
@@ -52,6 +53,8 @@ export default function Notifications() {
     const[moneyRecieved, setMoneyRecieved] = useState()
   
     useEffect(()  => {
+        const interval = setInterval(() => {
+
         async function MoneyRecieved(){
 
             
@@ -86,6 +89,10 @@ export default function Notifications() {
                 }
         }
     }
+}, 2000);
+
+// return () => clearInterval(interval);
+// }, []);
                     if(Payment === true)
                     <Link href="notification">
                     <Badge color="secondary">
@@ -117,21 +124,14 @@ export default function Notifications() {
     },[moneyRecieved])
    
     
-        const notify = () => {
-            toast.success('🦄 Wow so easy!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });}
+        
     return (
     
        <>
        <div>
-       <Button >test</Button>
+      
+
+
          <h2>Notifications</h2>
          
             <List
@@ -161,5 +161,5 @@ export default function Notifications() {
         </div>
        
         </>
-    )}
-    
+    )
+    }
