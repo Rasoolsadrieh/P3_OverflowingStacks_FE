@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react"
+import { ToastContainer , toast } from "react-toastify";
 
 export default function ResetPassword() {
 
@@ -22,22 +23,34 @@ export default function ResetPassword() {
         try {
             const response = await axios.put(`${url}`, rpc);
             console.log(response.data);
-            setBody(response.data);
+            console.log(response.status);
+            if(response.data === "Please check your email and previous password to update your password"){toast.warn(response.data)}
+            else{toast.success(response.data)}
+            
         
         }
         catch (error) {
             console.error(error);
-            alert(error.response.data);
+            toast.error(error.response.data);
         }
     }
 
     return (
     <>
+        <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover/>
         <input placeholder="Enter email" ref={a}></input>
         <input placeholder="Enter old password" ref={b}></input>
         <input placeholder="Enter new password" ref={c}></input>
         <button onClick={resetpassword}>RESET PASSWORD</button>
-        <h3>{body}</h3>
+        
     </>
     )
 }
