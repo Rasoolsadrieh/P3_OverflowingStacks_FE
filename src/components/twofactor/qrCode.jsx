@@ -3,10 +3,13 @@ import React, { useContext, useRef, useState } from "react";
 import QRCode from "react-qr-code";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function QrCode(){
 
     
+
     const [user] = useContext(userContext)
     const navigate = useNavigate();
     const [qrCodeInput, setQrCode] = useState();

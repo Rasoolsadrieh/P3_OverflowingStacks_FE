@@ -2,6 +2,8 @@ import axios from "axios";
 import { useContext, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ResetPassword() {
 
@@ -29,17 +31,29 @@ export default function ResetPassword() {
         try {
             const response = await axios.put(`${url}`, rpc);
             console.log(response.data);
+            if(response.data === "Please check your email and previous password to update your password"){toast.warn(response.data)}
+            else{toast.success(response.data)}
             setBody(response.data);
 
         }
         catch (error) {
             console.error(error);
-            alert(error.response.data);
+            toast.error(error.response.data);
         }
     }
 
     return (
     <>
+        <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover /> 
+        
         <text>{user.email}</text>
         <br></br>
         <br></br>
