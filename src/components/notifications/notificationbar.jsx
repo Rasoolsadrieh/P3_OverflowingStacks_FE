@@ -5,20 +5,24 @@ import Payment from "../sendmoney/transfermoney";
 import PaidIcon from '@mui/icons-material/Paid';
 import { Link } from "@mui/material";
 //import { FixedSizeList } from 'react-window';
-
+import Badge from "@mui/material/Badge";
 import List from '@mui/material/List';
-
 import { ListGroup } from "react-bootstrap";
+import axios from "axios";
+
+
+
 
 
 export default function Notifications() {
     const [menuBody, setMenuBody] = useState([]);
-    
+    console.log(userContext)
     const [menu, setMenu] = useState(true);
     const [menuRecent, setMenuRecent] = useState(true);
     const [user, setUser] = useContext(userContext);
     const url = "https://overflowingstacks.azurewebsites.net";
-    //console.log(user)
+  
+
     useEffect(() => {
         findAll();
     }, [menu]);
@@ -45,29 +49,35 @@ export default function Notifications() {
         } catch (e) {
             console.error(e);
         }
+    }
+    const[moneyRecieved, setMoneyRecieved] = useState()
+  
+    useEffect(()  => {
+        const interval = setInterval(() => {
+
         async function MoneyRecieved(){
 
-            const[moneyRecieved, setMoneyRecieved] = useState()
-            const[user, setUser] = useState()
             
-            if (Payment (isRecieved == false)) {
+            
+            if (Payment (user.isRecieved === false)) {
              
               } else {
-                useEffect(()  => {
-                    const fetchData = async () => isRecieved == true && <h3> You have recieved money! </h3>});
-                };
+                
+                     const fetchData = async () => {
+                        user.isRecieved === true && <h3> You have recieved money! </h3>;
+                 
                    
-                    componentDidMount() 
-                        this.timer = setInterval(()=> this.getMoney(), 10000);
-                        return () => clearInterval(interval);
-                      };
-                    }
+                    
+                        // this.timer = setInterval(()=> this.getMoney(), 10000);
+                        // return () => clearInterval(interval);
+                     
+                    
                     try {
-                        const response = await axios.put(`${url}/notification`, user);
-                        const response2 = await axios.put(`${url}/notification`, MoneyRecieved);
+                        const response = await axios.get(`${url}/notification`, user);
+                        const response2 = await axios.get(`${url}/notification`, MoneyRecieved);
                         console.log(response.data);
                         console.log(response2.data);
-                        setMoneyRecieved(!isRecieved)
+                        setMoneyRecieved(!user.isRecieved)
             
             
                      
@@ -76,7 +86,14 @@ export default function Notifications() {
                         console.error(error.response2.data);
                         
                     }
-                    if(Payment == true)
+                }
+        }
+    }
+}, 2000);
+
+// return () => clearInterval(interval);
+// }, []);
+                    if(Payment === true)
                     <Link href="notification">
                     <Badge color="secondary">
           <PaidIcon />
@@ -104,13 +121,19 @@ export default function Notifications() {
         
             
          
-    }
+    },[moneyRecieved])
    
+    
+        
     return (
     
        <>
        <div>
+      
+
+
          <h2>Notifications</h2>
+         
             <List
         sx={{
             width: '100%',
@@ -136,6 +159,7 @@ export default function Notifications() {
         </ListGroup>
         </List>
         </div>
-        
+       
         </>
-    );
+    )
+    }

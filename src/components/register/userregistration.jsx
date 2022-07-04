@@ -4,15 +4,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Button, Box, Paper, Card, CardContent, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "/Users/rf/Desktop/P3_OverflowingStacks_FE/src/components/login/login_bg.jpeg";
+import Image from "../login/login_bg.jpeg"
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import { isValidFormat } from "@firebase/util";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 >>>>>>> Stashed changes
+=======
+import { useContext } from "react";
+>>>>>>> 1070dd60fb8ed7a3c360229a3f210459055e3973
 
 const styles = {
   heroContainer: {
