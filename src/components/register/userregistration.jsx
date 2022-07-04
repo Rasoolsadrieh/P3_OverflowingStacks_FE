@@ -11,6 +11,7 @@ import { isValidFormat } from "@firebase/util";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 const styles = {
   heroContainer: {
     height: "120vh",
@@ -58,8 +59,9 @@ const [values, setValues] = React.useState({
 
   const navigate = useNavigate();
 
-  const [user,setUser] = useContext(userContext)
-  console.log(user, "hello")
+
+  const [user,setUser] = React.useContext(userContext)
+
 
   const url = "https://overflowingstacks.azurewebsites.net";
 
@@ -95,7 +97,9 @@ const [values, setValues] = React.useState({
       if(usersPulled[i].email === emailInput.current.value){
         console.log("User Exists");
         valid = false;
+
         toast.error("User already exists");
+
         break;
       }
         
@@ -105,6 +109,7 @@ const [values, setValues] = React.useState({
   }
      if (emailInput.current.value === "" || passwordInput.current.value === "") {
       valid = false;
+
       toast.error("You need to enter valid email and password");
     }// else if (emailInput.current.value.match(mailformat));
     else if (fnameInput.current.value === "" || lnameInput.current.value === "") {
@@ -154,8 +159,46 @@ const [values, setValues] = React.useState({
       }
 
     }
+    else if (dobInput.current.value === "") {
+      valid = false;
+      alert("You need to enter valid Date of Birth");
+
+    }
+    else if(!isNaN(emailInput.current.value)){
+      valid = false;
+      alert("You need to enter valid email");
+    }
+    else if(!isNaN(fnameInput.current.value)){
+      valid = false;
+      alert("You need to enter valid first name")
+    }
+    else if(!isNaN(lnameInput.current.value)){
+      valid = false;
+      alert("You need to enter valid last name")
+    }
+    else if(!isNaN(passwordInput.current.value)){
+      valid = false;
+      alert("Your Password needs to include letters")
+    }
+    else {
+      if(valid === true){
+        setUser({...user, email: emailInput.current.value})
+      try {
+        const response = await axios.post(`${url}/users/register`, userprofile);
+        console.log(response.data)
+        navigate("/registerqrcode");
+      } catch (error) {
+        console.error(error.response.data);
+        console.log(error);
+        alert(error.response.data);
+      }
+
+    }
   }
   }
+
+  }
+
     async function checkUserName(){
       try {
         const response = await fetch(`${url}/users/findAllUsers`);
@@ -257,6 +300,8 @@ const [values, setValues] = React.useState({
               </div>
               </center>
               </Paper>
+
     </div>
+
       );
     }
