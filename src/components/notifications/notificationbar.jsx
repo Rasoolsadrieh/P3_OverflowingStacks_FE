@@ -7,11 +7,9 @@ import { Link } from "@mui/material";
 //import { FixedSizeList } from 'react-window';
 import Badge from "@mui/material/Badge";
 import List from '@mui/material/List';
+
 import { ListGroup } from "react-bootstrap";
 import axios from "axios";
-
-
-
 
 
 export default function Notifications() {
@@ -21,7 +19,7 @@ export default function Notifications() {
     const [menuRecent, setMenuRecent] = useState(true);
     const [user, setUser] = useContext(userContext);
     const url = "https://overflowingstacks.azurewebsites.net";
-  
+    console.log(user, "hello")
 
     useEffect(() => {
         findAll();
@@ -53,8 +51,6 @@ export default function Notifications() {
     const[moneyRecieved, setMoneyRecieved] = useState()
   
     useEffect(()  => {
-        const interval = setInterval(() => {
-
         async function MoneyRecieved(){
 
             
@@ -89,10 +85,6 @@ export default function Notifications() {
                 }
         }
     }
-}, 2000);
-
-// return () => clearInterval(interval);
-// }, []);
                     if(Payment === true)
                     <Link href="notification">
                     <Badge color="secondary">
@@ -123,17 +115,11 @@ export default function Notifications() {
          
     },[moneyRecieved])
    
-    
-        
     return (
     
        <>
        <div>
-      
-
-
          <h2>Notifications</h2>
-         
             <List
         sx={{
             width: '100%',
@@ -159,7 +145,6 @@ export default function Notifications() {
         </ListGroup>
         </List>
         </div>
-       
+        
         </>
-    )
-    }
+    )}
