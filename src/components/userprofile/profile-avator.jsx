@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube,faTwitter,faLinkedin} from "@fortawesome/free-brands-svg-icons";
 import { Avatar } from "@mui/material";
 import { storage } from "./firebase";
-import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {ref, uploadBytes, getDownloadURL, listAll} from "firebase/storage";
 import axios from "axios";
 import { useRef } from "react";
 import './profile-avatar.css';
@@ -39,8 +39,6 @@ export default function AvatorProfile() {
 
   const [darkMode,setDarkMode]= useState(false)
 
-  const[imageUrls, setImageUpload] = useState();
-
   const darktheme=createTheme({
     palette: {
       mode: darkMode? 'dark' : 'light',
@@ -51,27 +49,29 @@ export default function AvatorProfile() {
   const [url, setUrl] = useState(null);
 
 
-  const handleSubmit = () => {
-    const imageRef = ref(storage, `images/${image + v4()}`);
-    console.log(imageRef);
-    if (image === null) return;
-    uploadBytes(imageRef, image).then ((snapshot) => {
-      getDownloadURL(snapshot.ref)
-      .then((url) => {
-        setUrl(url);
-      })
-      .catch(error =>{
-        console.log(error.message, "error geting the image url");
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
+
+  const imagesListRef = ref(storage, "images/");
+  const uploadFile = () => {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `image/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [ url]);
       });
-      
-    }).catch(error =>{
-      console.log(error.message);
-    })
+    });
   };
 
-  console.log("Check2")
-  console.log(image);
-  console.log(url);
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageUrls(() => [url]);
+        });
+      });
+    });
+  }, []);
 
   //-----------------------------------------------------------------------------
 
@@ -228,14 +228,11 @@ export default function AvatorProfile() {
       <center> <h4>Welcome to Profile Dashboard</h4> </center>
 
       {/* ------------------------------Avatar Image----------------------------------------------------- */}
-      <div>
-
-        <Avatar src={url} alt="Avatar" sx ={{width : 150, height : 150}} />
-        <input type="file" onChange={(event) => {setImage(event.target.files[0]); }} />
-        <br></br>
-        <Button onClick={handleSubmit}>Upload</Button>
-  
-      </div>
+       <div >
+      {imageUrls.map((url) => {
+        return <Avatar alt = "Remy Sharp "src={url} sx ={{width : 150, height : 150}} />;
+      })}
+      </div> 
       {/* ------------------------------Avatar Image----------------------------------------------------- */}
 
   
