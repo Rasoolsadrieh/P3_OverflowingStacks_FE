@@ -33,7 +33,7 @@ export default function ResetPassword() {
             console.log(response.data);
             if(response.data === "Please check your email and previous password to update your password"){toast.warn(response.data)}
             else{toast.success(response.data)}
-            setBody(response.data);
+            // setBody(response.data);
 
         }
         catch (error) {
@@ -66,7 +66,7 @@ export default function ResetPassword() {
         <button onClick={resetpassword}>RESET PASSWORD</button>
         <br></br>
         <br></br>
-        <h3>{body}</h3>
+        {/* <h3>{body}</h3> */}
         <br></br>
         <br></br>
         <button onClick={()=>{navigate("/profiledashboard")}}>Back To Profile</button>

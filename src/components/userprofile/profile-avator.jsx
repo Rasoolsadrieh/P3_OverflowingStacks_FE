@@ -14,6 +14,8 @@ import './profile-avatar.css';
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import {listAll} from "firebase/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -120,17 +122,19 @@ import {listAll} from "firebase/storage";
   async function updateProfile() {
               
     try {   
-      const response = (await fetch(`${urla}/profile/findAllProfile`));
+      const response = (await fetch(`${urlAzure}/profile/findAllProfile`));
       const profileResponse = await response.json();
       setProfileB(profileResponse[0].email)
       setProfileBody(profileResponse[0].email)
       console.log(profileResponse[0].email)
 
-      const userResponse = (await fetch (`${urla}/users/findAllUsers`))
+      const userResponse = (await fetch (`${urlAzure}/users/findAllUsers`))
       const userResponsj = await userResponse.json();
       setUserBody(userResponsj[0])
+      
     } catch (error) {
         // console.error("here is the problem ");
+        toast.error("Profile Update Failed. Please Try Again")
     } 
 
     const profile = {
@@ -149,12 +153,13 @@ import {listAll} from "firebase/storage";
     }
 
     try {
-      const response = await axios.put(`${urla}/profile/update`, profile);
+      const response = await axios.put(`${urlAzure}/profile/update`, profile);
       console.log(response.data);
-      
+      toast.success("Profile Updated Successfully")
        
     } catch (error) {
       console.error(error.response.data);
+      toast.error("Something went wrong. Come back later")
     }
   }
   // console.log(userBody);
@@ -162,6 +167,15 @@ import {listAll} from "firebase/storage";
   return (
 
     <>
+      <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover /> 
       <center> <h4>Wlecome to Profile dashboard</h4> </center>
       <div >
       {imageUrls.map((url) => {
