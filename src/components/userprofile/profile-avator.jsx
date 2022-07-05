@@ -17,6 +17,9 @@ import Notifications from "../notifications/notificationbar";
 import Image from "./bgimage.jpg";
 import WelcomeNavBar from "../welcome/welcomepagenavbar";
 import { Label } from "@mui/icons-material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const styles = {
@@ -199,9 +202,11 @@ export default function AvatorProfile() {
     const response = await axios.put(`${urlAzure}/profile/update`, profile);
     console.log(response.data);
     console.log(response.data);
+    toast.success("Profile Updated Successfully");
 
   } catch (error) {
     console.error("Here is the problem of update");
+    toast.error("Profile Update Failed, Please Try Again");
   }
   } else{
     const responseNewProfile = await axios.post(`${urlAzure}/profile/register`, profile);
@@ -215,6 +220,16 @@ export default function AvatorProfile() {
   return (
 
     <>
+      <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
+
     <WelcomeNavBar/>
       <center> <div class="h2">Update Profile</div> 
      
