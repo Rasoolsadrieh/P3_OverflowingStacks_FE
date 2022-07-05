@@ -59,8 +59,8 @@ const [values, setValues] = React.useState({
 
   const navigate = useNavigate();
 
-
-  const [user,setUser] = React.useContext(userContext)
+  const [user,setUser] = useContext(userContext)
+  console.log(user, "hello")
 
 
   const url = "https://overflowingstacks.azurewebsites.net";
