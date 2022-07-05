@@ -61,7 +61,7 @@ export default function ResetPassword() {
             console.log(response.data);
             if(response.data === "Please check your email and previous password to update your password"){toast.warn(response.data)}
             else{toast.success(response.data)}
-            setBody(response.data);
+            // setBody(response.data);
 
         }
         catch (error) {
@@ -117,6 +117,9 @@ export default function ResetPassword() {
         <br></br>
         <TextField id="outlined-basic" label="Enter New Password" variant="outlined" inputRef={c}/>
         <br></br>
+
+        {/* <h3>{body}</h3> */}
+
         <br></br>
         <br></br>
         <Button variant='contained' onClick={resetpassword}>RESET PASSWORD</Button>

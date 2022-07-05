@@ -9,6 +9,8 @@ import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, Icon
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import Image from "./bg_image.jpeg";
 import { createTheme } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const styles = {
   heroContainer: {
@@ -78,11 +80,21 @@ export default function CustomerLogin() {
     } catch (error) {
         console.error(error.response.data)
         console.log(error)
+        toast.error("Invalid email or password");
     }
 }
 
   return (
     <>
+      <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover />
     <center>
     <div className="login">
     <Paper style={styles.heroContainer}>

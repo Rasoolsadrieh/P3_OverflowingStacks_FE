@@ -11,6 +11,11 @@ import { useRef } from "react";
 import './profile-avatar.css';
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
+
+import {listAll} from "firebase/storage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useContext } from "react"
 import { userContext } from "../../App";
 import {Card, createTheme, TextField, FormControl, InputLabel, MenuItem, Select, Paper} from "@mui/material";
@@ -36,6 +41,7 @@ const styles = {
  };
 
 export default function AvatorProfile() {
+
 
   const [darkMode,setDarkMode]= useState(false)
 
@@ -163,31 +169,48 @@ export default function AvatorProfile() {
   const accountNumberInput  = useRef();
    
   async function updateProfile() {
-  let created = false;
-  const profile = {
-    profileName: profileNameInput.current.value,
-    email: user.email,
-    balance: balanceInput.current.value,
-    accountName: accountNameInput.current.value,
-    accountNumber:accountNumberInput.current.value  
-  };
-   
-  console.log(profile)
-  console.log(user)
-  
-  try{
-  const response = await fetch(`${urlAzure}/profile/findAllProfile`)
-  const responseProfile = await response.json();
-  console.log(responseProfile)
 
+              
+    try {   
+      const response = (await fetch(`${urlAzure}/profile/findAllProfile`));
+      const profileResponse = await response.json();
+      setProfileB(profileResponse[0].email)
+      setProfileBody(profileResponse[0].email)
+      console.log(profileResponse[0].email)
 
-  
-  for (let i = 0; i < responseProfile.length; i++ ){
-    // console.log(responseProfile[i].email.email);
-    if(responseProfile[i].email.email === user.email){
-      console.log("Profile Found");
-      created = true;
-      break;
+      const userResponse = (await fetch (`${urlAzure}/users/findAllUsers`))
+      const userResponsj = await userResponse.json();
+      setUserBody(userResponsj[0])
+      
+    } catch (error) {
+        // console.error("here is the problem ");
+        toast.error("Profile Update Failed. Please Try Again")
+    } 
+
+    const profile = {
+        profileName: profileNameInput.current.value,
+        email: profileB.email,
+        balance: balanceInput.current.value,
+        accountName: accountNameInput.current.value,
+        accountNumber:accountNumberInput.current.value,   
+    };
+    // console.log(profileB)
+    // console.log(profileBody.fname)
+
+    const user = {
+        fname: fnameInput.current.value,
+        lname: lnameInput.current.value,
+    }
+
+    try {
+      const response = await axios.put(`${urlAzure}/profile/update`, profile);
+      console.log(response.data);
+      toast.success("Profile Updated Successfully")
+       
+    } catch (error) {
+      console.error(error.response.data);
+      toast.error("Something went wrong. Come back later")
+
     }
   } 
 
@@ -216,19 +239,19 @@ export default function AvatorProfile() {
   return (
 
     <>
-    <WelcomeNavBar/>
-      <center> <div class="h2">Update Profile</div> 
-      
-      <Paper style={styles.heroContainer}> 
-      <br></br>
-      <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
-        borderRadius: 2, width: 700, height: 1000 }}>
-      <br></br>
 
-      <center> <h4>Welcome to Profile Dashboard</h4> </center>
+      <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover /> 
+      <center> <h4>Welcome to Profile dashboard</h4> </center>
+      <div >
 
-      {/* ------------------------------Avatar Image----------------------------------------------------- */}
-       <div >
       {imageUrls.map((url) => {
         return <Avatar alt = "Remy Sharp "src={url} sx ={{width : 150, height : 150}} />;
       })}

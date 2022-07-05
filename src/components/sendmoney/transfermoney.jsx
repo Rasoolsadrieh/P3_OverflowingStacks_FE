@@ -75,7 +75,7 @@ export default function Payment() {
         isValid = false;
         setPay(false);
         setNegative(true);
-
+        toast.error("your money is less than what you are trying to send, please lower the amount or deposit to your account!")
        }else{ isValid = true;}
         
         const sender = {
@@ -112,6 +112,7 @@ export default function Payment() {
             console.log(response2.data);
             setPay(true);
             setNegative(false);
+            toast.success("Money has been sent!");
             }
 
          
@@ -140,26 +141,32 @@ export default function Payment() {
                 <br></br> 
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Confirm your Name" variant="outlined" inputRef={profileNameInput}/> 
                 <br></br>
+                {negativeBalance}
+                {showPay}
+
                 <br></br>
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter Name of the Receiver" variant="outlined" inputRef={receiverProfileInput}/> 
                 <br></br>
 
-                <ToastContainer position="top-right"
-autoClose={5000}
-hideProgressBar={true}
-newestOnTop={true}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover />
+                <Button  onClick={transferMoneyNow}>Send Money</Button> 
+                <ToastContainer position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={true}
+                    newestOnTop={true}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover />
+
 
                 <br></br>
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter your Payment Amount" variant="outlined" inputRef={paymentInput}/>
+
                 <br></br>
                 <br></br>
-                {negativeBalance && <h4>Your money is less than what you are trying to send, please lower the amount or deposit to your account!</h4>}
-                {showPay && <h4>Your money transfer has been sent!</h4>}
+                {negativeBalance}
+                {showPay}
                 <br></br>
                 <br></br>
               
