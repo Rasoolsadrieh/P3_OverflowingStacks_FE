@@ -4,14 +4,13 @@ import { userContext } from "../../App";
 import { useContext } from "react";
 
 export default function ProfileNavBar(){
+    
 
     const navigate = useNavigate();
-
 
     const [user,setUser] = useContext(userContext)
     async function toWelcome(){
         setUser({ ...user, email: "Guest@yahoo.com", isReceived: false })
-
         navigate("/Welcome")
     }
 

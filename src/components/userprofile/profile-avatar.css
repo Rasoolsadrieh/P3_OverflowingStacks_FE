@@ -1,6 +1,7 @@
 .social-container {
     background: #eee;
-    padding: 25px 50px;
+    padding: 25px 25px;
+    border-width: 0
   }
 
   a.social {
@@ -24,10 +25,17 @@
   a.twitter {
     color: #49a1eb;
   }
-  
-  a.instagram {
-    color: black;
-  }
+
+  /* .profile{
+    position:center;
+    width:10px;
+    border:0px white;
+    margin:200px;
+    padding:100px;
+    font-family:AR CENA;
+    font-size:18px;
+    
+    } */
 
   /* input[type="text"] {
     width:90px;
@@ -38,21 +46,15 @@
     position:center;
     padding:10px;
 }
-
-label{
-position:left;
-width:30px;
-border:0px white;
-margin:50px;
-padding:10px;
-font-family:AR CENA;
-font-size:20px;
-
-}
-
 input{
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid lightgrey;
   /* width: 100px */
+
+
+  .h4{
+    color:black;
+    font-weight: 1000;
+}

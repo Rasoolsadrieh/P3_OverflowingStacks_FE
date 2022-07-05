@@ -29,13 +29,13 @@ export default function Welcome(){
   // console.log(user.email)
 
   async function login(){
-    setUser({ ...user, email: "Guest" })
+    //setUser({ ...user, email: "Guest" })
     navigate("/login")
     console.log(user)
   }
 
   async function register(){
-    setUser({ ...user, email: "Guest" })
+    // setUser({ ...user, email: "Guest" })
     navigate("/register")
     console.log(user)
   }
@@ -45,13 +45,14 @@ export default function Welcome(){
     return(
 
        <>
+       
        <Paper style={styles.heroContainer} >
          <div class="h1">Money is built on trust.<br></br> Trust your money with us.</div>
          
         <div class="b1">
-        <Button variant="contained" size="large" sx={{color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={login}>Login</Button></div>
+        <Button variant="contained" size="big" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={login}>Login</Button></div>
          <div class="b2">
-         <Button variant="contained" size="large" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={register}>Register</Button></div>
+         <Button variant="contained" size="big" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={register}>Register</Button></div>
         
         
         
