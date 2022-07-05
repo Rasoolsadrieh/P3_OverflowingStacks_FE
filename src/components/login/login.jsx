@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { userContext } from "../../App";
 import { TextField, OutlinedInput, InputLabel, InputAdornment, FormControl, IconButton, Box, Paper, Card, CardContent, Typography, } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import Image from "./login_bg.jpeg";
+import Image from "./bg_image.jpeg";
 import { createTheme } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
