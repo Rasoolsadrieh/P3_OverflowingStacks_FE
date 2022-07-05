@@ -7,6 +7,8 @@ import Image from "./bg_image.jpeg";
 import { Paper, Card, Button, createTheme } from "@mui/material";
 import '../darkmode/darkmode.css';
 import WelcomeNavBar from "../welcome/welcomepagenavbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const styles = {
@@ -23,6 +25,7 @@ const styles = {
     }
    };
 
+
 export function QrCode(){
 
     const [darkMode,setDarkMode]= useState(false)
@@ -34,6 +37,7 @@ export function QrCode(){
   })
 
     
+
     const [user] = useContext(userContext)
     const navigate = useNavigate();
     const [qrCodeInput, setQrCode] = useState();

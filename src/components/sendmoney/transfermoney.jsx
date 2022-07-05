@@ -3,6 +3,9 @@ import { useRef, useState, useContext, } from "react";
 import { Button, Paper, Card, createTheme, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
+import React from 'react';
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 import Image from "./bg_img2.jpg";
 import Notifications from "../notifications/notificationbar";
 import WelcomeNavBar from "../welcome/welcomepagenavbar";
@@ -20,6 +23,9 @@ const styles = {
       opacity: "85%",
     }
    };
+
+
+
 
 export default function Payment() {
   
@@ -50,7 +56,17 @@ export default function Payment() {
   
     async function transferMoneyNow() {
 
-
+        const notify = () => {
+            toast.success('Money has been sent!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            }
         const profileResponse = await axios.get(`${url}/profile/findProfile?profileName=${profileNameInput.current.value}`)
         const receiverProfileResponse = await axios.get(`${url}/profile/findProfile?profileName=${receiverProfileInput.current.value}`)
         console.log(profileResponse.data.balance - paymentInput.current.value)
@@ -104,6 +120,7 @@ export default function Payment() {
             console.error(error.response2.data);
             
         }
+        
     }
 
     return (
@@ -126,6 +143,17 @@ export default function Payment() {
                 <br></br>
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter Name of the Receiver" variant="outlined" inputRef={receiverProfileInput}/> 
                 <br></br>
+
+                <Button  onClick={transferMoneyNow}>Send Money</Button> <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={true}
+newestOnTop={true}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover />
+
                 <br></br>
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter your Payment Amount" variant="outlined" inputRef={paymentInput}/>
                 <br></br>

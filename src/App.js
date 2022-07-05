@@ -19,6 +19,7 @@ import Logo2 from './components/darkmode/darklogo2.png'
 import Logo from './components/darkmode/Overflowing_Stacks.png'
 import './components/darkmode/darkmode.css'
 import Payment from "./components/sendmoney/transfermoney";
+import Notifications from "./components/notifications/notificationbar";
 
 export const userContext = createContext();
 
@@ -76,6 +77,7 @@ function App() {
                 <Route path="register" element={<UserRegistration />} />
                 <Route path="welcome" element={<Welcome />} />
                 <Route path="sendmoney" element={<Payment />} />
+                <Route path="notification" element={<Notifications />} />
               </Routes>
          </userContext.Provider>
          </Paper>
