@@ -56,3 +56,9 @@ input{
   background: transparent;
   border-bottom: 1px solid lightgrey;
   /* width: 100px */
+
+
+  .h4{
+    color:black;
+    font-weight: 600;
+}

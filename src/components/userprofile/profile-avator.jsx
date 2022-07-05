@@ -14,10 +14,38 @@ import './profile-avatar.css';
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import {listAll} from "firebase/storage";
+import {Card, CardContent, createTheme, TextField, FormControl, InputLabel, MenuItem, Select, Paper} from "@mui/material";
+import Notifications from "../notifications/notificationbar";
+import Image from "./bgimage.jpg";
+import WelcomeNavBar from "../welcome/welcomepagenavbar";
 
 
+const styles = {
+  heroContainer: {
+    height: "122vh",
+    backgroundImage: `url(${Image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'relative',
+    bottom: "400px",
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    margin: 0,
+    bottom: "30px",
+    opacity: "80%",
+  }
+ };
 
- export default function AvatorProfile() {
+ 
+
+export default function AvatorProfile() {
+
+  const [darkMode,setDarkMode]= useState(false)
+
+  const darktheme=createTheme({
+    palette: {
+      mode: darkMode? 'dark' : 'light',
+    }
+  })
 
 
   const [imageUpload, setImageUpload] = useState(null);
@@ -162,12 +190,19 @@ import {listAll} from "firebase/storage";
   return (
 
     <>
-      <center> <h4>Wlecome to Profile dashboard</h4> </center>
-      <div >
-      {imageUrls.map((url) => {
-        return <Avatar alt = "Remy Sharp "src={url} sx ={{width : 150, height : 150}} />;
-      })}
+    <WelcomeNavBar/>
+      <center> <div class="h2">Update Profile</div> 
       
+      <Paper style={styles.heroContainer}> 
+      <br></br>
+      <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
+        borderRadius: 2, width: 700, height: 862 }}>
+      <br></br>
+     
+      {imageUrls.map((url) => {
+        return <Avatar alt = "Remy Sharp "src={url} sx ={{width : 125, height : 125}} />;
+      })}
+      <br></br>
       <input
         type="file"
         onChange={(event) => {
@@ -175,56 +210,69 @@ import {listAll} from "firebase/storage";
       }} />
 
       <Button onClick={uploadFile}>Upload Image</Button>
-      </div>
-      <div className="App">
-          <left>
+      
+     
+          
             <br></br>
             <br></br>
-            <br></br>
-            <div className="header">
-            </div>
             
-            <label >First Name : </label>
+            
+            
             {/* <output value={value} onChange={handleChange}> {profileBody.fname} </output> */}
-            <input value={valuefname} onChange={handleChangefname} placeholder="Enter your First Name" ref={fnameInput}></input>
+            <TextField size="small" id="outlined-basic" label="Enter your First Name" variant="outlined" onChange={handleChangefname} inputRef={fnameInput}/>
+            {/* <input value={valuefname} onChange={handleChangefname} placeholder="Enter your First Name" ref={fnameInput}></input> */}
             <br></br>
-            <br></br>
-            <br></br>
-            <label >Last Name * : </label>
+           <br></br>
             {/* <output> {profileBody.lname} </output> */}
-            <input value={valuelname} onChange={handleChangelname} placeholder="Enter Your Last Name" ref={lnameInput}></input>
+            <TextField size="small" id="outlined-basic" label="Enter your Last Name" variant="outlined" onChange={handleChangelname} inputRef={lnameInput}/>
+            {/* <input value={valuelname} onChange={handleChangelname} placeholder="Enter Your Last Name" ref={lnameInput}></input> */}
             <br></br>
             <br></br>
-            <br></br>
-            <label >Profile Name * : </label>
-            <input value={value} onChange={handleChange} placeholder="Enter Profile Name" ref={profileNameInput}></input>
-            <br></br>
+            <TextField size="small" id="outlined-basic" label="Enter your Username" variant="outlined" onChange={handleChange} inputRef={profileNameInput}/>
+            {/* <input value={value} onChange={handleChange} placeholder="Enter Profile Name" ref={profileNameInput}></input> */}
             <br></br>
             <br></br>
-            <label >Email *  :    </label>
-            <input value={valueemail} onChange={handleChangeemail}  placeholder="Enter your email" ref={emailInput}></input>
+            <TextField size="small" id="outlined-basic" label="Enter your Email" variant="outlined" onChange={handleChangeemail} inputRef={emailInput}/>
+            {/* <input value={valueemail} onChange={handleChangeemail}  placeholder="Enter your email" ref={emailInput}></input> */}
             <br></br>
             <br></br>
-            <br></br>
-            <label >Balance  : </label>
-            <input  value={valuebalance} onChange={handleChangebalance} placeholder="Enter your balance" ref={balanceInput}></input>
-            <br></br>
-            <br></br>
-            <br></br>
-            <label >Account Name : </label>
-            <input value={valueaccountName} onChange={handleChangeaccountName} placeholder="Enter your accountName" ref={accountNameInput}></input>
+            
+            <TextField size="small" id="outlined-basic" label="Enter your balance" variant="outlined" onChange={handleChangebalance} inputRef={balanceInput}/>
+            {/* <input  value={valuebalance} onChange={handleChangebalance} placeholder="Enter your balance" ref={balanceInput}></input> */}
             <br></br>
             <br></br>
+            
+            <TextField size="small" id="outlined-basic" label="Enter your Account Name" variant="outlined" onChange={handleChangeaccountName} inputRef={accountNameInput}/>
+            {/* <input value={valueaccountName} onChange={handleChangeaccountName} placeholder="Enter your accountName" ref={accountNameInput}></input> */}
             <br></br>
-            <label >Account Number : </label>
-            <input  value={valueaccountNumber} onChange={handleChangeaccountNumber} placeholder="Enter your accountNumber" ref={accountNumberInput}></input>
+            <br></br>
+            
+            <TextField size="small" id="outlined-basic" label="Enter your Account Number" variant="outlined" onChange={handleChangeaccountNumber} inputRef={accountNumberInput}/>
+            {/* <input  value={valueaccountNumber} onChange={handleChangeaccountNumber} placeholder="Enter your accountNumber" ref={accountNumberInput}></input> */}
             <br></br>  
-            <br></br>                  
-            </left> 
-            <br></br>
-            </div>
-            <left>
-            <div className="col-75">
+            <br></br>                 
+          
+            
+            
+            <FormControl size="small"  variant="outlined" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="Country">Country </InputLabel>
+        <Select
+          labelId="Country"
+          id="Country"
+          label="Select"
+          width="60px"
+        >
+          
+          <MenuItem value="usa">USA</MenuItem>
+          <MenuItem value="canada">Canada</MenuItem>
+          <MenuItem value="australia">Australia</MenuItem>
+          <MenuItem value="ethiopia">Ethiopia</MenuItem>
+          
+          
+        </Select>
+      </FormControl>
+            
+            {/* <div className="col-75">
             <label >Country * : </label>
               <select id="country" name="country">
               <option value="australia">USA</option>
@@ -232,12 +280,31 @@ import {listAll} from "firebase/storage";
               <option value="usa">Australia</option>
               <option value="usa">Ethiopia</option>
               </select>
-            </div>
+            </div> */}
             <br></br>
-            <br></br>
-            <br></br>
+           
+            
+
+            <FormControl size="small"  variant="outlined" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="Country">Time Zone </InputLabel>
+        <Select
+          labelId="Time Zone"
+          id="Time Zone"
+          label="Select"
+        >
+          
+          <MenuItem value="australia">(GMT-5:00) America/New_York</MenuItem>
+          <MenuItem value="canada">(GMT-5:00) America/Jamaica</MenuItem>
+          <MenuItem value="rio">(GMT-5:00) America/Rio_Branca</MenuItem>
+          <MenuItem value="indiana">(GMT-5:00) America/Indiana/Winamac</MenuItem>
+          <MenuItem value="indianapolis">(GMT-5:00) America/Indianapolis</MenuItem>
+          <MenuItem value="toronto">(GMT-5:00) America/Toronto</MenuItem>
+          <MenuItem value="usa">(GMT-5:00) US/Eastern</MenuItem>
+          
+        </Select>
+      </FormControl>
   
-            <label >Time zone ? : </label>
+            {/* <label >Time zone ? : </label>
               <select id="timezone" name="timezone">
               <option value="australia">(GMT-5:00) America/New_York</option>
               <option value="canada">(GMT-5:00) America/Jamaica</option>
@@ -246,18 +313,21 @@ import {listAll} from "firebase/storage";
               <option value="usa">(GMT-5:00) America/Indianapolis</option>
               <option value="usa">(GMT-5:00) America/Toronto</option>
               <option value="usa">(GMT-5:00) US/Eastern</option>
-              </select>
+              </select> */}
             <br></br>
             <br></br>
-            <br></br>
-            </left>
-            <center>
+            
+            
             <Button onClick={updateProfile}>Update</Button>
+            
+            </Card>
             <br></br>
             <br></br>
-          
+            </Paper>
+            <center>
             <div className="social-container">
-              <h4>Connect your social accounts</h4>
+              <div className="h4">Connect your social accounts</div>
+              <br></br>
               <a href="https://www.youtube.com"
                 className="youtube social">
                 <FontAwesomeIcon icon={faYoutube} size="2x" />
@@ -270,8 +340,10 @@ import {listAll} from "firebase/storage";
                  className="linkedin social">
               <FontAwesomeIcon icon={faLinkedin} size="2x" />
               </a>
-
             </div>
+            
+            
+            </center>
             </center>
     
     </>

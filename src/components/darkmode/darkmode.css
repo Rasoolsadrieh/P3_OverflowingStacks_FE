@@ -14,21 +14,46 @@
 .h1{
 font-family: 'Open Sans', sans-serif;
 font-size: 80px;
+text-shadow:0 1px 0 #ffffff;
 position:relative;
 top: 80px;
 color: black;
+padding-left: 50px;
+}
+
+.h2{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    text-shadow:0 1px 0 #ffffff; 
+    position:relative;
+    bottom: 50px;
+}
+
+.h3{
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    
 }
 
 .b1{
     position:relative;
     top:162px;
     left:600px;
+    padding-left: 50px;
     
 }
 
 .b2{
     position:relative;
-    top:120px;
+    top:127px;
     left:850px;
+    padding-left: 50px;
 }
 
+.h8{
+    position:relative;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    text-shadow:0 1px 0 #ffffff; 
+}

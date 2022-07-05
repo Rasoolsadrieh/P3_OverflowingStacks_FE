@@ -10,14 +10,25 @@ import Image from '../welcome/background_City.jpeg'
 
 
 export default function WelcomeNavBar(){
-
   
+
+    
+
+    async function toWelcome(){
+        navigate("/Welcome")
+    }
   
     const navigate = useNavigate();
 
     return(
         <>
-        <WelcomeNavBar/>
+        <center>
+        <Button sx={{marginTop: -25}} onClick={() => navigate("/profile")}>Profile</Button>
+            <Button sx={{marginTop: -25}} onClick={()=>{navigate("/resetpassword")}}>Reset Password</Button>
+            <Button sx={{marginTop: -25}} onClick={()=>{navigate("/registerqrcode")}}>Get QR Code</Button>
+            <Button sx={{marginTop: -25}} onClick={()=>{navigate("/sendmoney")}}>Send Money</Button>
+            <Button sx={{marginTop: -25}} onClick={toWelcome}>Log Out</Button>
+            </center>
         </>
     )
 }
