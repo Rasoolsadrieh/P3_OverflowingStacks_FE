@@ -144,7 +144,7 @@ export default function Payment() {
                 <TextField sx={{ width: '35ch' }} id="outlined-basic" label="Enter Name of the Receiver" variant="outlined" inputRef={receiverProfileInput}/> 
                 <br></br>
 
-                <Button  onClick={transferMoneyNow}>Send Money</Button> <ToastContainer position="top-right"
+                <ToastContainer position="top-right"
 autoClose={5000}
 hideProgressBar={true}
 newestOnTop={true}
