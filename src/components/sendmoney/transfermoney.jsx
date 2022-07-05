@@ -4,10 +4,12 @@ import { Button, Paper, Card, createTheme, TextField, Typography } from "@mui/ma
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 import Image from "./bg_img2.jpg";
+import Notifications from "../notifications/notificationbar";
+import WelcomeNavBar from "../welcome/welcomepagenavbar";
 
 const styles = {
     heroContainer: {
-      height: "100vh",
+      height: "90vh",
       backgroundImage: `url(${Image})`,
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -106,14 +108,16 @@ export default function Payment() {
 
     return (
         <>
+        <WelcomeNavBar/>
+       <center> <div class="h2">Send Money </div></center>
                 <Paper style={styles.heroContainer}>
                 <center>
                 <br></br>
                 <br></br>
                 <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{ opacity: "98%", boxShadow: 5,
-              borderRadius: 2, width: 400, height: 600 }}>
+              borderRadius: 2, width: 400, height: 500 }}>
                 <br></br>
-                <Typography>Transfer Money Below</Typography>
+                
                 <br></br>
                 <Typography>{user.email}</Typography>
                 <br></br> 
@@ -130,10 +134,11 @@ export default function Payment() {
                 {showPay && <h4>Your money transfer has been sent!</h4>}
                 <br></br>
                 <br></br>
-                <Button variant='contained' onClick={transferMoneyNow}>Send Money</Button>
-                <br></br>
-                <br></br>
-                <Button variant='contained' onClick={() => navigate("/profiledashboard")}>Back</Button>       
+              
+                <Button sx={{marginRight:'20px'}} variant='contained' onClick={transferMoneyNow}>Send Money</Button>
+               
+                <Button variant='contained' onClick={() => navigate("/profiledashboard")}>Back</Button>   
+                
                 </Card>
                 </center>  
                 </Paper>      

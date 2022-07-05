@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 import Image from "./bg_img2.jpg";
 import { Card, Paper, createTheme, TextField, Box, Button, Typography } from "@mui/material";
+import WelcomeNavBar from "../welcome/welcomepagenavbar";
 
 const styles = {
     heroContainer: {
@@ -64,6 +65,7 @@ export default function ResetPassword() {
 
     return (
     <>
+    <WelcomeNavBar/>
         <Paper style={styles.heroContainer}>
         <br></br>
         <br></br>
@@ -95,9 +97,10 @@ export default function ResetPassword() {
         <TextField id="outlined-basic" label="Enter New Password" variant="outlined" inputRef={c}/>
         <br></br>
         <br></br>
+        <br></br>
         <Button variant='contained' onClick={resetpassword}>RESET PASSWORD</Button>
-        <br></br>
-        <br></br>
+       <br></br>
+       <br></br>
         <Button variant='contained' onClick={() => navigate("/profiledashboard")}>Back</Button> 
         </center>
         <Typography>{body}</Typography>

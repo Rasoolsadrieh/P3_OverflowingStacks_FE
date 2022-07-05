@@ -15,7 +15,7 @@ import CustomerLogin from "./components/login/login";
 import { QrCode } from "./components/twofactor/qrCode";
 import { QrLogin } from "./components/twofactor/qrLogin";
 import UserRegistration from "./components/register/userregistration";
-import Logo2 from './components/darkmode/Overflowing_Stacks_Dark.png'
+import Logo2 from './components/darkmode/darklogo2.png'
 import Logo from './components/darkmode/Overflowing_Stacks.png'
 import './components/darkmode/darkmode.css'
 import Payment from "./components/sendmoney/transfermoney";

@@ -49,9 +49,9 @@ export default function Welcome(){
          <div class="h1">Money is built on trust.<br></br> Trust your money with us.</div>
          
         <div class="b1">
-        <Button variant="contained" size="large" sx={{color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={login}>Login</Button></div>
+        <Button variant="contained" size="big" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={login}>Login</Button></div>
          <div class="b2">
-         <Button variant="contained" size="large" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={register}>Register</Button></div>
+         <Button variant="contained" size="big" sx={{ color: "white", backgroundColor: "black", borderColor: "grey"}} onClick={register}>Register</Button></div>
         
         
         

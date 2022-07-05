@@ -20,6 +20,7 @@
     "firebase": "^9.8.4",
     "i": "^0.3.7",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-qr-code": "^2.0.7",
     "react-router-dom": "^6.3.0",

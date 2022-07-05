@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 export default function ProfileNavBar(){
+    
 
     const navigate = useNavigate();
 

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
 import Image from "./bg_image.jpeg";
 import { Paper, Card, Button, createTheme } from "@mui/material";
+import '../darkmode/darkmode.css';
+import WelcomeNavBar from "../welcome/welcomepagenavbar";
 
 
 const styles = {
@@ -62,12 +64,13 @@ export function QrCode(){
 return(
     
     <>
+    <WelcomeNavBar/>
         <Paper style={styles.heroContainer}>
         <br></br>
         <br></br>
         <center>
         <Card check={darkMode} change={()=>{setDarkMode(!darkMode)}} sx={{  opacity: "98%", boxShadow: 5,
-        borderRadius: 2, width: 500, height: 650 }}>
+        borderRadius: 2, width: 500, height: 550 }}>
        
         <body onLoad={render()}></body>
         <center>
@@ -79,9 +82,10 @@ return(
                 value={qrCode} />
         </div>
         <br></br>
-        <a target="_blank" rel="noopener noreferrer" href="https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?hl=en">Google Auth Add On</a>
-        <h3>This is your Sercet Key. You can input this directly into Google Authineticator or Scan the Qr Code above.</h3>
-        <h3>Secret Key : {qrCodeInput}</h3>
+        <a target="_blank" rel="noopener noreferrer" href="https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai?hl=en"><div className="h3">Google Auth Add On</div></a>
+        <div className="h3">This is your Sercet Key. You can input this directly into Google Authineticator or Scan the Qr Code above.</div>
+        <div className="h3">Secret Key : {qrCodeInput}</div>
+        <br></br>
         <Button variant='contained' onClick={()=>{navigate("/profiledashboard")}}>Setup Profile</Button>
         </center>
         </Card>
