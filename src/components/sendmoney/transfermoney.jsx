@@ -3,7 +3,10 @@ import { useRef, useState, useContext } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../../App";
+import React from 'react';
+  import { ToastContainer, toast } from 'react-toastify';
 
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function Payment() {
   
@@ -27,7 +30,17 @@ export default function Payment() {
   
     async function transferMoneyNow() {
 
-
+        const notify = () => {
+            toast.success('Money has been sent!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+            }
         const profileResponse = await axios.get(`${url}/profile/findProfile?profileName=${profileNameInput.current.value}`)
         const receiverProfileResponse = await axios.get(`${url}/profile/findProfile?profileName=${receiverProfileInput.current.value}`)
         console.log(profileResponse.data.balance - paymentInput.current.value)
@@ -81,6 +94,7 @@ export default function Payment() {
             console.error(error.response2.data);
             
         }
+        
     }
 
     return (
@@ -101,7 +115,15 @@ export default function Payment() {
                 {showPay && <h4>your money transfer has been sent!</h4>}
                 <br></br>
                 <br></br>
-                <Button  onClick={transferMoneyNow}>Send Money</Button>
+                <Button  onClick={transferMoneyNow}>Send Money</Button> <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={true}
+newestOnTop={true}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover />
                 <br></br>
                 <br></br>
                 <Button  onClick={() => navigate("/profiledashboard")}>Back</Button>       

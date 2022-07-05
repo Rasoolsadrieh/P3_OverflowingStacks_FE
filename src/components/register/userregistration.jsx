@@ -8,6 +8,9 @@ import Image from "../login/login_bg.jpeg";
 import { createTheme } from "@mui/material";
 import { userContext } from "../../App";
 import { isValidFormat } from "@firebase/util";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const styles = {
   heroContainer: {
@@ -59,6 +62,7 @@ const [values, setValues] = React.useState({
   const [user,setUser] = useContext(userContext)
   console.log(user, "hello")
 
+
   const url = "https://overflowingstacks.azurewebsites.net";
 
   const emailInput = useRef();
@@ -93,7 +97,9 @@ const [values, setValues] = React.useState({
       if(usersPulled[i].email === emailInput.current.value){
         console.log("User Exists");
         valid = false;
-        alert("User already exists");
+
+        toast.error("User already exists");
+
         break;
       }
         
@@ -103,19 +109,55 @@ const [values, setValues] = React.useState({
   }
      if (emailInput.current.value === "" || passwordInput.current.value === "") {
       valid = false;
-      alert("You need to enter valid email and password");
+
+      toast.error("You need to enter valid email and password");
     }// else if (emailInput.current.value.match(mailformat));
     else if (fnameInput.current.value === "" || lnameInput.current.value === "") {
       valid = false;
-      alert("You need to enter valid First or Last Name");
+      toast.error("You need to enter valid First or Last Name");
     }
     else if (usernameInput.current.value === "" || !isNaN(usernameInput.current.value) ) {
       valid = false;
-      alert("You need to enter valid Username");
+      toast.error("You need to enter valid Username");
     }
     else if (phonenumberInput.current.value === "" || isNaN(phonenumberInput.current.value)) {
       valid = false;
-      alert("You need to enter valid Phone Number");
+      toast.error("You need to enter valid Phone Number");
+    }
+    else if (dobInput.current.value === "") {
+      valid = false;
+      toast.error("You need to enter valid Date of Birth");
+
+    }
+    else if(!isNaN(emailInput.current.value)){
+      valid = false;
+      toast.error("You need to enter valid email");
+    }
+    else if(!isNaN(fnameInput.current.value)){
+      valid = false;
+      toast.error("You need to enter valid first name")
+    }
+    else if(!isNaN(lnameInput.current.value)){
+      valid = false;
+      toast.error("You need to enter valid last name")
+    }
+    else if(!isNaN(passwordInput.current.value)){
+      valid = false;
+      toast.error("Your Password needs to include letters")
+    }
+    else {
+      if(valid === true){
+        setUser({...user, email: emailInput.current.value})
+      try {
+        const response = await axios.post(`${url}/users/register`, userprofile);
+        console.log(response.data)
+        navigate("/registerqrcode");
+      } catch (error) {
+        console.error(error.response.data);
+        console.log(error);
+        toast.error(error.response.data);
+      }
+
     }
     else if (dobInput.current.value === "") {
       valid = false;
@@ -154,6 +196,9 @@ const [values, setValues] = React.useState({
     }
   }
   }
+
+  }
+
     async function checkUserName(){
       try {
         const response = await fetch(`${url}/users/findAllUsers`);
@@ -171,6 +216,16 @@ const [values, setValues] = React.useState({
 
   return (
 
+    <div>
+    <ToastContainer position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover /> 
 
     <Paper style={styles.heroContainer}> 
             
@@ -245,6 +300,8 @@ const [values, setValues] = React.useState({
               </div>
               </center>
               </Paper>
-    
+
+    </div>
+
       );
     }
